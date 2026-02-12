@@ -38,6 +38,7 @@ export default function Portfolio() {
   }, []);
 
   useEffect(() => {
+    let observer = null;
     // Small delay to ensure DOM is fully rendered
     const timer = setTimeout(() => {
       const observerOptions = {
@@ -45,7 +46,7 @@ export default function Portfolio() {
         rootMargin: '0px 0px -100px 0px'
       };
 
-      const observer = new IntersectionObserver((entries) => {
+      observer = new IntersectionObserver((entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             const classList = entry.target.className;
@@ -70,11 +71,12 @@ export default function Portfolio() {
       animatedElements.forEach((el) => {
         observer.observe(el);
       });
-
-      return () => observer.disconnect();
     }, 100);
 
-    return () => clearTimeout(timer);
+    return () => {
+      clearTimeout(timer);
+      if (observer) observer.disconnect();
+    };
   }, []);
 
   const certificates = [
@@ -90,7 +92,7 @@ export default function Portfolio() {
       tags: ['HTML', 'CSS', 'JavaScript'],
       image: 'https://res.cloudinary.com/dgib19szk/image/upload/v1767780750/Screenshot_2026-01-07_102815_rr1koh.png',
       category: 'Learning Platform',
-      github: '#',
+      github: 'https://github.com/Parmarprashant/coursera-clone',
       live: 'https://courseraa-prashant.netlify.app',
       youtube: 'https://youtu.be/bOv65Dt3avk?si=x2qNM685yzrV1PNp'
     },
@@ -100,7 +102,7 @@ export default function Portfolio() {
       tags: ['HTML', 'CSS', 'JavaScript'],
       image: 'https://res.cloudinary.com/dgib19szk/image/upload/v1767780750/Screenshot_2026-01-07_103140_fx5l0q.png',
       category: 'Logistics',
-      github: '#',
+      github: 'https://github.com/Parmarprashant/delhivery-clone',
       live: 'https://del-prashant.netlify.app',
       youtube: 'https://youtu.be/znt3gThQh4g?si=l8NLNiQVXbgACb0E'
     },
@@ -110,7 +112,7 @@ export default function Portfolio() {
       tags: ['HTML', 'CSS', 'JavaScript'],
       image: 'https://res.cloudinary.com/dgib19szk/image/upload/v1767780750/Screenshot_2026-01-07_103834_z0bjuj.png',
       category: 'Food Delivery',
-      github: '#',
+      github: 'https://github.com/Parmarprashant/skipii-clone',
       live: 'https://skippi-prashant.netlify.app',
       youtube: 'https://youtu.be/AAypqWni_MM?si=EZaaIZhWFAGqC5FG'
     },
@@ -120,7 +122,7 @@ export default function Portfolio() {
       tags: ['HTML', 'CSS', 'JavaScript'],
       image: 'https://res.cloudinary.com/dgib19szk/image/upload/v1767780750/Screenshot_2026-01-07_104334_zlcpvi.png',
       category: 'E-Commerce',
-      github: '#',
+      github: 'https://github.com/Parmarprashant/bluetokai-clone',
       live: 'https://blue-clone-prashant.netlify.app',
       youtube: 'https://youtu.be/O6Mdh3mOgCo?si=3erYXPQ9AzeIjcr3'
     },
@@ -130,7 +132,7 @@ export default function Portfolio() {
       tags: ['HTML', 'CSS', 'JavaScript'],
       image: 'https://res.cloudinary.com/dgib19szk/image/upload/v1767780750/Screenshot_2026-01-07_104426_inuup6.png',
       category: 'Developer Tools',
-      github: '#',
+      github: 'https://github.com/Parmarprashant/postman-clone',
       live: 'https://post-clone-prashan.netlify.app',
       youtube: 'https://youtu.be/1ZDdGl2ar2U?si=V5s70zRHTWk0oXmN'
     },
@@ -140,7 +142,7 @@ export default function Portfolio() {
       tags: ['HTML', 'CSS', 'JavaScript'],
       image: 'https://res.cloudinary.com/dgib19szk/image/upload/v1767780751/Screenshot_2026-01-07_104517_bsyo7d.png',
       category: 'E-Commerce',
-      github: '#',
+      github: 'https://github.com/Parmarprashant/blix-scooter-clone',
       live: 'https://bliss-clone.netlify.app',
       youtube: 'https://youtu.be/lVykFH56af8?si=y45U3vmHcRnK3Dgd'
     },
@@ -243,7 +245,7 @@ export default function Portfolio() {
                 <div className="absolute inset-0 flex items-center justify-center">
                   <img src="https://res.cloudinary.com/dgib19szk/image/upload/v1767781842/WhatsApp_Image_2025-12-19_at_6.26.39_PM_sqhrst.jpg"
                     alt="Loading profile"
-                    className="w-24 h-24 rounded-full object-cover border-2 border-blue-500 animate-pulse"
+                    className="profile-pic w-24 h-24 rounded-full object-cover border-2 border-blue-500 animate-pulse"
                   />
                 </div>
               </div>
@@ -905,17 +907,152 @@ export default function Portfolio() {
             border: 1px solid rgba(239, 68, 68, 0.3);
           }
 
+          /* Light mode: primary gradient buttons keep white text */
+          html.light-mode a.bg-gradient-to-r.from-blue-600,
+          html.light-mode a.bg-gradient-to-r.from-blue-500,
+          html.light-mode button.bg-gradient-to-r.from-blue-600,
+          html.light-mode button.bg-gradient-to-r.from-blue-500,
+          html.light-mode a.bg-gradient-to-r.from-green-500,
+          html.light-mode a.bg-gradient-to-r.from-green-600 {
+            color: #ffffff !important;
+          }
+
+          /* Light mode: richer primary gradient (blue–purple) for better visibility */
+          html.light-mode a.from-blue-600,
+          html.light-mode a.from-blue-500,
+          html.light-mode button.from-blue-600,
+          html.light-mode button.from-blue-500 {
+            --tw-gradient-from: #1d4ed8;
+            --tw-gradient-to: rgba(29, 78, 216, 0);
+            --tw-gradient-stops: var(--tw-gradient-from), #7c3aed;
+          }
+          html.light-mode a.to-purple-600,
+          html.light-mode a.to-purple-500,
+          html.light-mode button.to-purple-600,
+          html.light-mode button.to-purple-500 {
+            --tw-gradient-to: #7c3aed;
+          }
+
+          /* Light mode: outline buttons (border + blue text) */
+          html.light-mode .border-2.border-blue-500 {
+            border-color: #2563eb;
+          }
+          html.light-mode a.border-blue-500.text-blue-400 {
+            color: #1d4ed8;
+            border-color: #2563eb;
+          }
+          html.light-mode a.border-blue-500.text-blue-400:hover {
+            background-color: rgba(37, 99, 235, 0.08);
+            color: #1e40af;
+          }
+
+          /* Light mode: slate outline button (Resume) */
+          html.light-mode a.border-slate-600 {
+            border-color: #64748b;
+            color: #475569;
+          }
+          html.light-mode a.border-slate-600:hover {
+            border-color: #2563eb;
+            color: #1d4ed8;
+          }
+
+          /* Light mode: GitHub / dark secondary buttons – keep dark background, white text */
+          html.light-mode a.from-slate-700,
+          html.light-mode a.from-slate-600 {
+            --tw-gradient-from: #334155;
+            --tw-gradient-to: rgba(51, 65, 85, 0);
+            --tw-gradient-stops: var(--tw-gradient-from), #1e293b;
+            color: #ffffff !important;
+          }
+          html.light-mode a.to-slate-800,
+          html.light-mode a.to-slate-700,
+          html.light-mode button.to-slate-600 {
+            --tw-gradient-to: #1e293b;
+          }
+
+          /* Light mode: disabled GitHub button */
+          html.light-mode button.cursor-not-allowed.bg-slate-700\\/80,
+          html.light-mode span.cursor-not-allowed.bg-slate-700\\/80 {
+            background-color: rgba(148, 163, 184, 0.5);
+            color: #64748b;
+          }
+
+          /* Light mode: green Live button – keep white text */
+          html.light-mode a.from-green-500,
+          html.light-mode a.from-green-600 {
+            --tw-gradient-from: #16a34a;
+            --tw-gradient-to: rgba(22, 163, 74, 0);
+            --tw-gradient-stops: var(--tw-gradient-from), #059669;
+            color: #ffffff !important;
+          }
+          html.light-mode a.to-emerald-600,
+          html.light-mode a.to-emerald-700 {
+            --tw-gradient-to: #059669;
+          }
+
+          /* Light mode: form submit button */
+          html.light-mode button.bg-gradient-to-r.from-blue-600 {
+            color: #ffffff !important;
+          }
+          html.light-mode button.bg-gradient-to-r:disabled {
+            background: linear-gradient(to right, #94a3b8, #64748b);
+            color: #ffffff !important;
+          }
+
+          /* Light mode: Video button (white bg) – ensure contrast */
+          html.light-mode a.bg-white.rounded-lg {
+            background-color: #f8fafc;
+            border: 1px solid #e2e8f0;
+            color: #1e293b;
+          }
+          html.light-mode a.bg-white.rounded-lg:hover {
+            background-color: #f1f5f9;
+            border-color: #cbd5e1;
+          }
+
+          /* Light mode: small badges (e.g. category, certificate count) */
+          html.light-mode .bg-blue-500\\/20.border-blue-500\\/30 {
+            background-color: rgba(37, 99, 235, 0.12);
+            border-color: rgba(37, 99, 235, 0.4);
+            color: #1d4ed8;
+          }
+
+          /* Light mode: icon boxes (gradient circles) keep white icon */
+          html.light-mode .bg-gradient-to-br.from-blue-500 .text-white,
+          html.light-mode .bg-gradient-to-br.from-blue-500 svg,
+          html.light-mode .bg-gradient-to-br.from-red-600 .text-white {
+            color: #ffffff !important;
+          }
+
+          /* Light mode: theme toggle button in nav */
+          html.light-mode button.rounded-full.bg-gradient-to-r {
+            color: #ffffff !important;
+          }
+
+          /* Light mode: social links hover */
+          html.light-mode .group.hover\:-translate-y-3:hover .text-slate-300 {
+            color: #1e293b;
+          }
+          html.light-mode .group.hover\:scale-125:hover .text-slate-300 {
+            color: #0f172a;
+          }
+
+          /* Light mode: brighter profile photos */
+          html.light-mode img.profile-pic {
+            filter: brightness(1.35) contrast(1.08);
+          }
+
           /* Status message styles */
         `}</style>
 
         {/* Navigation */}
         <nav className="fixed w-full glass-effect shadow-2xl z-50 border-b border-blue-500/20 backdrop-blur-xl">
-          <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 py-3 sm:py-4 flex justify-between items-center">
             <div className="flex items-center gap-3">
               <img
                 src="https://res.cloudinary.com/dgib19szk/image/upload/v1767781842/WhatsApp_Image_2025-12-19_at_6.26.39_PM_sqhrst.jpg"
                 alt="Prashant Parmar logo"
-                className="w-10 h-10 rounded-full border-2 border-blue-500 object-cover"
+                className="profile-pic w-10 h-10 rounded-full border-2 border-blue-500 object-cover"
               />
               <h1 className="text-2xl font-black">
                 <span className="gradient-text">PP</span>
@@ -956,13 +1093,22 @@ export default function Portfolio() {
           </div>
 
           {menuOpen && (
-            <div className="md:hidden glass-effect border-t border-blue-500/20 animate-slide-in-down">
-              <div className="flex flex-col gap-4 p-6">
+            <div className="md:hidden fixed inset-0 z-50 min-h-screen bg-gradient-to-b from-slate-950 via-slate-900 to-black animate-slide-in-down flex flex-col">
+              <div className="flex justify-end p-6">
+                <button
+                  onClick={() => setMenuOpen(false)}
+                  className="p-2 rounded-lg hover:bg-slate-800/50 transition-colors"
+                  aria-label="Close menu"
+                >
+                  <X size={28} className="text-blue-400" />
+                </button>
+              </div>
+              <div className="flex-1 flex flex-col items-center justify-center gap-8 px-6">
                 {['About', 'Projects', 'Certificates', 'Skills', 'Education', 'Contact'].map((item, idx) => (
                   <a
                     key={idx}
                     href={`#${item.toLowerCase()}`}
-                    className="text-slate-300 font-semibold hover:text-blue-400 transition-colors"
+                    className="text-xl text-slate-300 font-semibold hover:text-blue-400 transition-colors py-2"
                     onClick={() => setMenuOpen(false)}
                   >
                     {item}
@@ -974,23 +1120,23 @@ export default function Portfolio() {
         </nav>
 
         {/* Hero Section */}
-        <section className="min-h-screen pt-20 pb-0 max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-20 items-center justify-items-center relative overflow-hidden">
+        <section className="min-h-screen pt-28 sm:pt-32 md:pt-24 lg:pt-20 pb-12 md:pb-0 max-w-7xl mx-auto px-4 sm:px-6 grid md:grid-cols-2 gap-12 md:gap-14 lg:gap-20 items-center justify-items-center relative overflow-hidden">
           <div className="absolute top-0 right-1/3 w-96 h-96 bg-blue-600 rounded-full mix-blend-screen filter blur-3xl opacity-20 animate-blob"></div>
           <div className="absolute bottom-20 left-1/4 w-80 h-80 bg-purple-600 rounded-full mix-blend-screen filter blur-3xl opacity-20 animate-blob animation-delay-2000"></div>
 
-          <div className="space-y-10 relative z-10 h-full flex flex-col justify-center">
-            <div className="space-y-6 animate-slide-in-left">
-              <h1 className="text-6xl md:text-7xl font-black leading-tight tracking-tighter animate-slide-up-bounce animation-delay-200">
+          <div className="space-y-8 md:space-y-10 relative z-10 h-full flex flex-col justify-center">
+            <div className="space-y-5 sm:space-y-6 animate-slide-in-left">
+              <h1 className="text-5xl sm:text-6xl md:text-6xl lg:text-7xl font-black leading-tight tracking-tighter animate-slide-up-bounce animation-delay-200">
                 Hi, I'm
                 <br />
                 <span className="gradient-text animate-text-glow">Prashant</span>
               </h1>
 
-              <p className="text-xl text-slate-300 leading-relaxed max-w-lg animate-fade-in-up animation-delay-300">
+              <p className="text-lg sm:text-xl text-slate-300 leading-relaxed max-w-lg animate-fade-in-up animation-delay-300">
                 A passionate web developer crafting beautiful, responsive, and high-performance digital experiences. I transform ideas into code.
               </p>
 
-              <div className="flex flex-wrap gap-4 pt-6">
+              <div className="flex flex-wrap gap-3 sm:gap-4 pt-4 sm:pt-6">
                 <a href="#contact" className="px-8 py-4 rounded-full font-bold bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-500 hover:to-purple-500 text-white transition-all duration-300 transform hover:scale-105 hover:shadow-xl hover:shadow-blue-500/50 group flex items-center gap-2 animate-rotate-scale animation-delay-400">
                   Get in Touch
                   <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
@@ -1006,13 +1152,13 @@ export default function Portfolio() {
           </div>
 
           {/* Profile Image */}
-          <div className="flex justify-center items-center relative z-10 animate-slide-in-right h-full">
+          <div className="flex justify-center items-center relative z-10 animate-slide-in-right h-full min-h-[280px] sm:min-h-0">
             <div className="relative animate-float">
-              <div className="relative w-80 h-80 md:w-96 md:h-96 rounded-full overflow-hidden border-4 border-blue-500/50 shadow-2xl animate-glow hover:animate-pulse-scale">
+              <div className="relative w-64 h-64 sm:w-72 sm:h-72 md:w-96 md:h-96 rounded-full overflow-hidden border-4 border-blue-500/50 shadow-2xl animate-glow hover:animate-pulse-scale">
                 <img
                   src="https://res.cloudinary.com/dgib19szk/image/upload/v1767781842/WhatsApp_Image_2025-12-19_at_6.26.39_PM_sqhrst.jpg"
                   alt="Prashant Parmar profile"
-                  className="w-full h-full object-cover hover:scale-110 transition-transform duration-500 brightness-110 contrast-105"
+                  className="profile-pic w-full h-full object-cover hover:scale-110 transition-transform duration-500 brightness-110 contrast-105"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-900/20 to-transparent"></div>
               </div>
@@ -1022,15 +1168,15 @@ export default function Portfolio() {
         </section>
 
         {/* About Section */}
-        <section id="about" className="py-12 relative overflow-hidden">
+        <section id="about" className="py-10 sm:py-12 md:py-16 relative overflow-hidden">
           <div className="absolute inset-0 opacity-30">
             <div className="absolute top-1/3 left-0 w-96 h-96 bg-blue-600 rounded-full mix-blend-screen filter blur-3xl opacity-20 animate-blob"></div>
             <div className="absolute bottom-0 right-0 w-96 h-96 bg-purple-600 rounded-full mix-blend-screen filter blur-3xl opacity-20 animate-blob animation-delay-2000"></div>
           </div>
 
-          <div className="max-w-6xl mx-auto px-6 relative z-10">
-            <div className="text-center mb-20 scroll-animate-up">
-              <h2 className="text-5xl md:text-6xl font-black mb-6 tracking-tight gradient-text section-heading">
+          <div className="max-w-6xl mx-auto px-4 sm:px-6 relative z-10">
+            <div className="text-center mb-12 md:mb-20 scroll-animate-up">
+              <h2 className="text-4xl sm:text-5xl md:text-6xl font-black mb-4 md:mb-6 tracking-tight gradient-text section-heading">
                 About Me
               </h2>
               <p className="text-xl text-slate-300 max-w-2xl mx-auto scroll-animate-up" style={{ animationDelay: '0.2s' }}>
@@ -1111,20 +1257,20 @@ export default function Portfolio() {
         </section>
 
         {/* Projects Section */}
-        <section id="projects" className="py-12 relative overflow-hidden">
+        <section id="projects" className="py-10 sm:py-12 md:py-16 relative overflow-hidden">
           <div className="absolute inset-0 opacity-20">
             <div className="absolute top-0 right-1/4 w-96 h-96 bg-blue-600 rounded-full mix-blend-screen filter blur-3xl opacity-30 animate-blob animation-delay-1000"></div>
           </div>
 
-          <div className="max-w-7xl mx-auto px-6 relative z-10">
-            <div className="text-center mb-20 scroll-animate-up">
-              <h2 className="text-5xl md:text-6xl font-black mb-6 tracking-tight gradient-text section-heading">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
+            <div className="text-center mb-12 md:mb-20 scroll-animate-up">
+              <h2 className="text-4xl sm:text-5xl md:text-6xl font-black mb-4 md:mb-6 tracking-tight gradient-text section-heading">
                 Featured Projects
               </h2>
               <p className="text-xl text-slate-300 scroll-animate-up" style={{ animationDelay: '0.2s' }}>Showcase of my best work and accomplishments</p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
               {projects.slice(0, projectsToShow).map((project, idx) => (
                 <div
                   key={idx}
@@ -1184,15 +1330,25 @@ export default function Portfolio() {
                         <span>Live</span>
                       </a>
 
-                      <a
-                        href={project.github}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex-1 px-4 py-2 rounded-lg font-bold text-white bg-gradient-to-r from-slate-700 to-slate-800 hover:from-slate-600 hover:to-slate-700 transition-all duration-300 flex items-center justify-center gap-2 group/github relative overflow-hidden hover:shadow-lg hover:shadow-slate-500/50 hover:scale-105 hover:-translate-y-1"
-                      >
-                        <Github size={16} />
-                        <span>GitHub</span>
-                      </a>
+                      {project.github && project.github !== '#' ? (
+                        <a
+                          href={project.github}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex-1 px-4 py-2 rounded-lg font-bold text-white bg-gradient-to-r from-slate-700 to-slate-800 hover:from-slate-600 hover:to-slate-700 transition-all duration-300 flex items-center justify-center gap-2 group/github relative overflow-hidden hover:shadow-lg hover:shadow-slate-500/50 hover:scale-105 hover:-translate-y-1"
+                        >
+                          <Github size={16} />
+                          <span>GitHub</span>
+                        </a>
+                      ) : (
+                        <span
+                          className="flex-1 px-4 py-2 rounded-lg font-bold text-white bg-slate-700/80 text-slate-400 cursor-not-allowed transition-all duration-300 flex items-center justify-center gap-2 opacity-80"
+                          title="Repo not linked — add github URL in App.jsx projects array"
+                        >
+                          <Github size={16} />
+                          <span>GitHub</span>
+                        </span>
+                      )}
 
                       <a
                         href={project.youtube}
@@ -1242,14 +1398,14 @@ export default function Portfolio() {
         </section>
 
         {/* Certificates Section */}
-        <section id="certificates" className="py-12 relative overflow-hidden">
+        <section id="certificates" className="py-10 sm:py-12 md:py-16 relative overflow-hidden">
           <div className="absolute inset-0 opacity-20">
             <div className="absolute top-1/2 left-0 w-96 h-96 bg-purple-600 rounded-full mix-blend-screen filter blur-3xl opacity-30 animate-blob animation-delay-2000"></div>
           </div>
 
-          <div className="max-w-5xl mx-auto px-6 relative z-10">
-            <div className="text-center mb-16 scroll-animate-up">
-              <h2 className="text-5xl md:text-6xl font-black mb-6 tracking-tight section-heading">
+          <div className="max-w-5xl mx-auto px-4 sm:px-6 relative z-10">
+            <div className="text-center mb-10 md:mb-16 scroll-animate-up">
+              <h2 className="text-4xl sm:text-5xl md:text-6xl font-black mb-4 md:mb-6 tracking-tight section-heading">
                 <span className="gradient-text">Certificates</span>
               </h2>
               <p className="text-xl text-slate-300 scroll-animate-up" style={{ animationDelay: '0.2s' }}>Professional achievements and credentials</p>
@@ -1324,14 +1480,14 @@ export default function Portfolio() {
         </section>
 
         {/* Education Section */}
-        <section id="education" className="py-12 relative overflow-hidden">
+        <section id="education" className="py-10 sm:py-12 md:py-16 relative overflow-hidden">
           <div className="absolute inset-0 opacity-20">
             <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-purple-600 rounded-full mix-blend-screen filter blur-3xl opacity-30 animate-blob animation-delay-1000"></div>
           </div>
 
-          <div className="max-w-4xl mx-auto px-6 relative z-10">
-            <div className="text-center mb-20 scroll-animate-up">
-              <h2 className="text-5xl md:text-6xl font-black mb-6 tracking-tight section-heading">
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 relative z-10">
+            <div className="text-center mb-12 md:mb-20 scroll-animate-up">
+              <h2 className="text-4xl sm:text-5xl md:text-6xl font-black mb-4 md:mb-6 tracking-tight section-heading">
                 <span className="gradient-text">Education</span>
               </h2>
               <p className="text-xl text-slate-300 scroll-animate-up" style={{ animationDelay: '0.2s' }}>My academic journey</p>
@@ -1358,19 +1514,19 @@ export default function Portfolio() {
         </section>
 
         {/* Contact Section */}
-        <section id="contact" className="py-20 relative overflow-hidden">
+        <section id="contact" className="py-12 sm:py-16 md:py-20 relative overflow-hidden">
           <div className="absolute inset-0 opacity-30">
             <div className="absolute top-0 left-1/3 w-96 h-96 bg-blue-600 rounded-full mix-blend-screen filter blur-3xl opacity-30 animate-blob"></div>
             <div className="absolute bottom-0 right-1/3 w-96 h-96 bg-purple-600 rounded-full mix-blend-screen filter blur-3xl opacity-30 animate-blob animation-delay-2000"></div>
           </div>
 
-          <div className="max-w-5xl mx-auto px-6 relative z-10">
+          <div className="max-w-5xl mx-auto px-4 sm:px-6 relative z-10">
             {/* Section Header */}
-            <div className="text-center mb-20 scroll-animate-up">
-              <div className="inline-block px-4 py-2 bg-blue-500/20 text-blue-400 rounded-full text-sm font-bold border border-blue-500/30 mb-6">
+            <div className="text-center mb-12 md:mb-20 scroll-animate-up">
+              <div className="inline-block px-4 py-2 bg-blue-500/20 text-blue-400 rounded-full text-sm font-bold border border-blue-500/30 mb-4 md:mb-6">
                 GET IN TOUCH
               </div>
-              <h2 className="text-5xl md:text-6xl font-black mb-6 tracking-tight gradient-text section-heading">
+              <h2 className="text-4xl sm:text-5xl md:text-6xl font-black mb-4 md:mb-6 tracking-tight gradient-text section-heading">
                 Ready to Collaborate?
               </h2>
               <p className="text-lg text-slate-300 max-w-2xl mx-auto scroll-animate-up" style={{ animationDelay: '0.2s' }}>
@@ -1534,8 +1690,8 @@ export default function Portfolio() {
         </section>
 
         {/* Footer */}
-        <footer className="border-t border-blue-500/20 py-8 text-center relative">
-          <div className="max-w-7xl mx-auto px-6">
+        <footer className="border-t border-blue-500/20 py-6 sm:py-8 text-center relative">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6">
             <p className="text-slate-400 font-semibold">
               <span className="text-blue-400">© 2025</span> Prashant Parmar. All rights reserved.
             </p>
