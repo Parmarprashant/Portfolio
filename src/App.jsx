@@ -146,6 +146,15 @@ export default function Portfolio() {
       live: 'https://bliss-clone.netlify.app',
       youtube: 'https://youtu.be/lVykFH56af8?si=y45U3vmHcRnK3Dgd'
     },
+    {
+      title: 'KisanDost',
+      desc: 'Empowering Indian farmers with precision technology, satellite monitoring, and expert crop care. A comprehensive agricultural platform built with modern technologies.',
+      tags: ['React JS', 'Next.js', 'MongoDB', 'Python', 'Node.js', 'Express'],
+      image: 'https://res.cloudinary.com/dgib19szk/image/upload/v1774428997/Screenshot_2026-03-25_141520_pa3qyq.png',
+      category: 'Agriculture Tech',
+      github: 'https://github.com/patelmanan112/ps-03-ventureHack.git',
+      live: 'https://venturehack.netlify.app'
+    },
   ];
 
   const education = [
@@ -1144,7 +1153,7 @@ export default function Portfolio() {
                 <a href="#projects" className="px-8 py-4 rounded-full font-bold border-2 border-blue-500 text-blue-400 hover:bg-blue-500/10 transition-all duration-300 transform hover:scale-105 animate-skew-in animation-delay-500">
                   View My Work
                 </a>
-                <a href="#" className="px-8 py-4 rounded-full font-bold border-2 border-slate-600 text-slate-300 hover:border-blue-500 hover:text-blue-400 transition-all duration-300 transform hover:scale-105 flex items-center gap-2 animate-slide-up-bounce animation-delay-600">
+                <a href="/Prashant-Parmar_Resume.pdf" download className="px-8 py-4 rounded-full font-bold border-2 border-slate-600 text-slate-300 hover:border-blue-500 hover:text-blue-400 transition-all duration-300 transform hover:scale-105 flex items-center gap-2 animate-slide-up-bounce animation-delay-600">
                   <Download size={18} /> Resume
                 </a>
               </div>
@@ -1286,16 +1295,18 @@ export default function Portfolio() {
                     <div className="absolute inset-0 bg-gradient-to-t from-slate-900 to-transparent opacity-60 group-hover:opacity-40 transition-opacity"></div>
 
                     {/* YouTube Play Button on Hover */}
-                    <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300">
-                      <a
-                        href={project.youtube}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="w-16 h-16 bg-gradient-to-br from-red-600 to-purple-600 rounded-full flex items-center justify-center text-white shadow-lg hover:shadow-2xl hover:shadow-purple-600/50 transform hover:scale-125 transition-all duration-300 animate-bounce-in border-2 border-white/20"
-                      >
-                        <img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" alt="YouTube Play" className="w-8 h-8 drop-shadow-md" />
-                      </a>
-                    </div>
+                    {project.youtube && (
+                      <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300">
+                        <a
+                          href={project.youtube}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="w-16 h-16 bg-gradient-to-br from-red-600 to-purple-600 rounded-full flex items-center justify-center text-white shadow-lg hover:shadow-2xl hover:shadow-purple-600/50 transform hover:scale-125 transition-all duration-300 animate-bounce-in border-2 border-white/20"
+                        >
+                          <img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" alt="YouTube Play" className="w-8 h-8 drop-shadow-md" />
+                        </a>
+                      </div>
+                    )}
                   </div>
 
                   <div className="p-6">
@@ -1350,19 +1361,21 @@ export default function Portfolio() {
                         </span>
                       )}
 
-                      <a
-                        href={project.youtube}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="px-4 py-2 rounded-lg font-bold bg-white hover:bg-slate-50 transition-all duration-300 flex items-center justify-center gap-2 group/youtube relative overflow-hidden hover:shadow-lg hover:shadow-red-500/60 hover:scale-105 hover:-translate-y-1"
-                      >
-                        <img
-                          src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png"
-                          alt="YouTube"
-                          className="w-4 h-4"
-                        />
-                        <span className="relative z-10 hidden sm:inline bg-gradient-to-r from-red-600 to-purple-600 bg-clip-text text-transparent">Video</span>
-                      </a>
+                      {project.youtube && (
+                        <a
+                          href={project.youtube}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className={`px-4 py-2 rounded-lg font-bold transition-all duration-300 flex items-center justify-center gap-2 group/youtube relative overflow-hidden hover:shadow-lg hover:scale-105 hover:-translate-y-1 ${isDark ? 'bg-white hover:bg-slate-50 hover:shadow-red-500/60' : 'bg-slate-100 hover:bg-white border border-red-500/30'}`}
+                        >
+                          <img
+                            src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png"
+                            alt="YouTube"
+                            className="w-4 h-4"
+                          />
+                          <span className={`relative z-10 hidden sm:inline font-bold ${isDark ? 'bg-gradient-to-r from-red-600 to-purple-600 bg-clip-text text-transparent' : 'text-red-600'}`}>Video</span>
+                        </a>
+                      )}
                     </div>
                   </div>
                 </div>
