@@ -16,6 +16,7 @@ import {
   Sun,
   Moon
 } from "lucide-react";
+import { motion } from "framer-motion";
 
 // Initialize EmailJS (do this once when component mounts)
 emailjs.init('l-V9MM0TrkHxURYX6'); // EmailJS Public Key
@@ -87,6 +88,16 @@ export default function Portfolio() {
 
   const projects = [
     {
+      title: 'KisanDost',
+      desc: 'Empowering Indian farmers with precision technology, satellite monitoring, and expert crop care. A comprehensive agricultural platform built with modern technologies.',
+      tags: ['React JS', 'Next.js', 'MongoDB', 'Python', 'Node.js', 'Express'],
+      image: 'https://res.cloudinary.com/dgib19szk/image/upload/v1774428997/Screenshot_2026-03-25_141520_pa3qyq.png',
+      category: 'Agriculture Tech',
+      github: 'https://github.com/patelmanan112/ps-03-ventureHack.git',
+      live: 'https://venturehack.netlify.app',
+      pinned: true
+    },
+    {
       title: 'Coursera',
       desc: 'Built a Coursera-inspired learning platform clone using HTML, CSS, and JavaScript with a responsive UI.',
       tags: ['HTML', 'CSS', 'JavaScript'],
@@ -145,15 +156,6 @@ export default function Portfolio() {
       github: 'https://github.com/Parmarprashant/blix-scooter-clone',
       live: 'https://bliss-clone.netlify.app',
       youtube: 'https://youtu.be/lVykFH56af8?si=y45U3vmHcRnK3Dgd'
-    },
-    {
-      title: 'KisanDost',
-      desc: 'Empowering Indian farmers with precision technology, satellite monitoring, and expert crop care. A comprehensive agricultural platform built with modern technologies.',
-      tags: ['React JS', 'Next.js', 'MongoDB', 'Python', 'Node.js', 'Express'],
-      image: 'https://res.cloudinary.com/dgib19szk/image/upload/v1774428997/Screenshot_2026-03-25_141520_pa3qyq.png',
-      category: 'Agriculture Tech',
-      github: 'https://github.com/patelmanan112/ps-03-ventureHack.git',
-      live: 'https://venturehack.netlify.app'
     },
   ];
 
@@ -1052,6 +1054,74 @@ export default function Portfolio() {
           }
 
           /* Status message styles */
+
+          /* Achievement Section */
+          @keyframes borderGlow {
+            0%, 100% { box-shadow: 0 0 20px rgba(250, 204, 21, 0.15), 0 0 60px rgba(168, 85, 247, 0.1), inset 0 0 20px rgba(250, 204, 21, 0.03); }
+            50%       { box-shadow: 0 0 40px rgba(250, 204, 21, 0.35), 0 0 100px rgba(168, 85, 247, 0.2), inset 0 0 40px rgba(250, 204, 21, 0.06); }
+          }
+          @keyframes trophyFloat {
+            0%, 100% { transform: translateY(0px) rotate(-3deg); }
+            50%       { transform: translateY(-10px) rotate(3deg); }
+          }
+          @keyframes shimmerBadge {
+            0%   { background-position: -200% center; }
+            100% { background-position: 200% center; }
+          }
+          @keyframes imageGlow {
+            0%, 100% { box-shadow: 0 0 30px rgba(250, 204, 21, 0.2), 0 8px 32px rgba(0,0,0,0.5); }
+            50%       { box-shadow: 0 0 60px rgba(250, 204, 21, 0.4), 0 8px 32px rgba(0,0,0,0.5); }
+          }
+          .achievement-card {
+            background: rgba(15, 23, 42, 0.55);
+            backdrop-filter: blur(24px);
+            border: 1px solid rgba(250, 204, 21, 0.25);
+            animation: borderGlow 4s ease-in-out infinite;
+            transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.4s ease;
+          }
+          .achievement-card:hover {
+            transform: translateY(-8px) scale(1.005);
+          }
+          .achievement-image {
+            animation: imageGlow 4s ease-in-out infinite;
+            transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+          }
+          .achievement-image:hover { transform: scale(1.04); }
+          .trophy-icon { animation: trophyFloat 3s ease-in-out infinite; display: inline-block; }
+          .winner-badge {
+            background: linear-gradient(90deg, #facc15, #f97316, #a855f7, #facc15);
+            background-size: 250% auto;
+            animation: shimmerBadge 3s linear infinite;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+          }
+          .member-pill {
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+          }
+          .member-pill:hover {
+            transform: translateY(-4px) scale(1.06);
+            background: rgba(250, 204, 21, 0.15);
+            border-color: rgba(250, 204, 21, 0.5);
+          }
+          html.light-mode .achievement-card {
+            background: rgba(255, 255, 255, 0.75);
+            border-color: rgba(202, 138, 4, 0.35);
+          }
+          html.light-mode .achievement-card h3,
+          html.light-mode .achievement-card p,
+          html.light-mode .achievement-card span {
+            color: #1e293b;
+          }
+          html.light-mode .member-pill {
+            background: rgba(254, 243, 199, 0.6);
+            border-color: rgba(202, 138, 4, 0.3);
+            color: #92400e;
+          }
+          html.light-mode .member-pill:hover {
+            background: rgba(254, 240, 138, 0.8);
+            border-color: rgba(202, 138, 4, 0.6);
+          }
         `}</style>
 
         {/* Navigation */}
@@ -1069,7 +1139,7 @@ export default function Portfolio() {
             </div>
 
             <div className="hidden md:flex gap-10 items-center">
-              {['About', 'Projects', 'Certificates', 'Skills', 'Education', 'Contact'].map((item, idx) => (
+              {['About', 'Achievements', 'Projects', 'Certificates', 'Skills', 'Education', 'Contact'].map((item, idx) => (
                 <a
                   key={idx}
                   href={`#${item.toLowerCase()}`}
@@ -1113,7 +1183,7 @@ export default function Portfolio() {
                 </button>
               </div>
               <div className="flex-1 flex flex-col items-center justify-center gap-8 px-6">
-                {['About', 'Projects', 'Certificates', 'Skills', 'Education', 'Contact'].map((item, idx) => (
+                {['About', 'Achievements', 'Projects', 'Certificates', 'Skills', 'Education', 'Contact'].map((item, idx) => (
                   <a
                     key={idx}
                     href={`#${item.toLowerCase()}`}
@@ -1265,6 +1335,209 @@ export default function Portfolio() {
           </div>
         </section>
 
+        {/* Achievement Section */}
+        <section id="achievements" className="py-10 sm:py-12 md:py-20 relative overflow-hidden">
+          {/* Ambient blobs */}
+          <div className="absolute inset-0 pointer-events-none overflow-hidden">
+            <div className="absolute top-1/4 left-1/3 w-72 h-72 bg-yellow-500 rounded-full mix-blend-screen filter blur-3xl opacity-10 animate-blob"></div>
+            <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-600 rounded-full mix-blend-screen filter blur-3xl opacity-10 animate-blob animation-delay-2000"></div>
+          </div>
+
+          <div className="max-w-6xl mx-auto px-4 sm:px-6 relative z-10">
+            {/* Section Header */}
+            <motion.div 
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.7 }}
+              className="text-center mb-10 md:mb-14"
+            >
+              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-yellow-500/30 bg-yellow-500/10 text-yellow-400 text-sm font-bold mb-5 tracking-widest uppercase">
+                <span>★</span> Highlights
+              </div>
+              <h2 className="text-4xl sm:text-5xl md:text-6xl font-black mb-3 tracking-tight gradient-text section-heading">
+                Achievements
+              </h2>
+              <p className="text-slate-400 text-base sm:text-lg max-w-xl mx-auto">
+                Moments that defined the journey
+              </p>
+            </motion.div>
+
+            {/* Main Achievement Card */}
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.95, y: 40 }}
+              whileInView={{ opacity: 1, scale: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
+              className="achievement-card rounded-3xl overflow-hidden" 
+            >
+              <div className="flex flex-col lg:flex-row">
+
+                {/* LEFT — Photo Gallery */}
+                <div className="lg:w-[46%] relative flex-shrink-0 overflow-hidden bg-slate-950 min-h-[260px] sm:min-h-[340px] lg:min-h-0">
+                  {/* Primary Photo */}
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <img
+                      src="https://res.cloudinary.com/dgib19szk/image/upload/v1774690494/WhatsApp_Image_2026-03-19_at_9.42.24_PM_fkctpx.jpg"
+                      alt="SU Hackathon 2026 team celebrating"
+                      className="achievement-image w-full h-full object-contain"
+                      style={{ minHeight: '100%' }}
+                    />
+                    {/* Gradient overlay for blending into right panel */}
+                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-slate-900/70 hidden lg:block"></div>
+                    <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-transparent to-transparent lg:hidden"></div>
+                  </div>
+
+                  {/* Second Photo — thumbnail overlay */}
+                  <motion.div 
+                    initial={{ opacity: 0, x: 20, y: 20 }}
+                    whileInView={{ opacity: 1, x: 0, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.6, delay: 0.4 }}
+                    className="absolute bottom-4 right-4 w-28 sm:w-36 aspect-video rounded-xl overflow-hidden border-2 border-yellow-400/50 shadow-xl z-10"
+                  >
+                    <img
+                      src="https://res.cloudinary.com/dgib19szk/image/upload/v1774690494/WhatsApp_Image_2026-03-19_at_9.44.37_PM_qy2ggp.jpg"
+                      alt="SU Hackathon 2026 award ceremony"
+                      className="w-full h-full object-cover hover:scale-110 transition-transform duration-500"
+                    />
+                    {/* Tiny label */}
+                    <div className="absolute inset-0 flex items-end p-1">
+                      <span className="text-[9px] font-bold text-white bg-black/60 px-1.5 py-0.5 rounded-md">Award Ceremony</span>
+                    </div>
+                  </motion.div>
+                </div>
+
+                {/* RIGHT — Content */}
+                <div className="lg:w-[54%] flex flex-col justify-center p-7 sm:p-9 lg:p-12 relative">
+                  {/* Trophy floating icon */}
+                  <div className="absolute top-6 right-6 text-4xl trophy-icon select-none opacity-60">🏆</div>
+
+                  <motion.div
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true, margin: "-50px" }}
+                    variants={{
+                      visible: { transition: { staggerChildren: 0.1, delayChildren: 0.2 } },
+                      hidden: {}
+                    }}
+                  >
+                    {/* Winner badge pill */}
+                    <motion.div 
+                      variants={{
+                        hidden: { opacity: 0, y: 20 },
+                        visible: { opacity: 1, y: 0 }
+                      }}
+                      className="inline-flex items-center gap-2 w-fit mb-5 px-4 py-1.5 rounded-full bg-yellow-500/10 border border-yellow-500/30"
+                    >
+                      <span className="text-xs">🥇</span>
+                      <span className="text-xs font-black uppercase tracking-widest winner-badge">Hackathon Winner</span>
+                    </motion.div>
+
+                    {/* Title */}
+                    <motion.h3 
+                      variants={{
+                        hidden: { opacity: 0, x: -20 },
+                        visible: { opacity: 1, x: 0 }
+                      }}
+                      className="text-2xl sm:text-3xl lg:text-4xl font-black text-white leading-tight mb-3"
+                    >
+                      🏆 SU Hackathon 2026 Winner<br />
+                      <span className="gradient-text">1st Place</span>
+                    </motion.h3>
+
+                    {/* Subtitle */}
+                    <motion.p 
+                      variants={{
+                        hidden: { opacity: 0, x: -20 },
+                        visible: { opacity: 1, x: 0 }
+                      }}
+                      className="text-yellow-400/80 font-semibold text-sm sm:text-base mb-4"
+                    >
+                      Building impactful AI solutions under pressure
+                    </motion.p>
+
+                    {/* Divider */}
+                    <motion.div 
+                      variants={{
+                        hidden: { opacity: 0, scaleX: 0 },
+                        visible: { opacity: 1, scaleX: 1 }
+                      }}
+                      style={{ originX: 0 }}
+                      className="w-16 h-0.5 bg-gradient-to-r from-yellow-400 to-purple-500 rounded-full mb-5"
+                    ></motion.div>
+
+                    {/* Description */}
+                    <motion.p 
+                      variants={{
+                        hidden: { opacity: 0, y: 20 },
+                        visible: { opacity: 1, y: 0 }
+                      }}
+                      className="text-slate-300 leading-relaxed text-sm sm:text-base mb-7 max-w-md"
+                    >
+                      Out of dozens of teams, we built <span className="text-white font-semibold">KisanDost</span> — an AI-powered precision agriculture platform for Indian farmers — and secured <span className="text-yellow-400 font-bold">1st place</span> at Sangam University's Hackathon 2026, Bhilwara, Rajasthan. Satellite crop monitoring, profit prediction &amp; multilingual support, shipped in under 24 hours.
+                    </motion.p>
+
+                    {/* Team Members */}
+                    <motion.div
+                      variants={{
+                        hidden: { opacity: 0, y: 20 },
+                        visible: { opacity: 1, y: 0 }
+                      }}
+                    >
+                      <p className="text-xs uppercase tracking-widest text-slate-500 font-bold mb-3">Team · VentureHack</p>
+                      <div className="flex flex-wrap gap-2">
+                        {[
+                          { name: 'Prashant Parmar',  role: 'Model Training' },
+                          { name: 'Anisha Chhajer',   role: 'Features' },
+                          { name: 'Manan Patel',      role: 'UI/UX & Architecture' },
+                          { name: 'Aryan Sabasana',   role: 'Model Training' },
+                        ].map((m, i) => (
+                          <motion.div
+                            key={i}
+                            initial={{ opacity: 0, scale: 0.8 }}
+                            whileInView={{ opacity: 1, scale: 1 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.4, delay: 0.5 + (i * 0.1) }}
+                            className="member-pill flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-800/60 border border-slate-700/50 cursor-default"
+                          >
+                            <div className="w-6 h-6 rounded-full bg-gradient-to-br from-yellow-400 to-purple-600 flex items-center justify-center text-xs font-black text-white flex-shrink-0">
+                              {m.name.charAt(0)}
+                            </div>
+                            <div>
+                              <span className="text-xs font-bold text-white block leading-none">{m.name}</span>
+                              <span className="text-[10px] text-slate-400 leading-none">{m.role}</span>
+                            </div>
+                          </motion.div>
+                        ))}
+                      </div>
+                    </motion.div>
+
+                    {/* CTA */}
+                    <motion.div 
+                      variants={{
+                        hidden: { opacity: 0, y: 20 },
+                        visible: { opacity: 1, y: 0 }
+                      }}
+                      className="mt-8"
+                    >
+                      <a
+                        href="https://venturehack.netlify.app"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 px-6 py-3 rounded-xl font-bold text-sm text-white bg-gradient-to-r from-yellow-500 to-orange-500 hover:from-yellow-400 hover:to-orange-400 transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-yellow-500/30"
+                      >
+                        <ExternalLink size={15} />
+                        View Live Project
+                      </a>
+                    </motion.div>
+                  </motion.div>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+        </section>
+
         {/* Projects Section */}
         <section id="projects" className="py-10 sm:py-12 md:py-16 relative overflow-hidden">
           <div className="absolute inset-0 opacity-20">
@@ -1293,6 +1566,16 @@ export default function Portfolio() {
                       className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-slate-900 to-transparent opacity-60 group-hover:opacity-40 transition-opacity"></div>
+                    
+                    {/* Pinned Badge */}
+                    {project.pinned && (
+                      <div className="absolute top-3 right-3 z-20">
+                        <div className="px-3 py-1 rounded-full bg-slate-900/80 backdrop-blur-md border border-yellow-500/50 shadow-lg flex items-center gap-1.5">
+                          <span className="text-xs">📌</span>
+                          <span className="text-xs font-bold text-yellow-400 uppercase tracking-wider">Pinned</span>
+                        </div>
+                      </div>
+                    )}
 
                     {/* YouTube Play Button on Hover */}
                     {project.youtube && (
