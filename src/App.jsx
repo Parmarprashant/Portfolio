@@ -31,6 +31,7 @@ export default function Portfolio() {
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
   const [formStatus, setFormStatus] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [activeAchievement, setActiveAchievement] = useState(null);
 
   useEffect(() => {
     const handleScroll = () => setScrollY(window.scrollY);
@@ -1072,6 +1073,19 @@ export default function Portfolio() {
             0%, 100% { box-shadow: 0 0 30px rgba(250, 204, 21, 0.2), 0 8px 32px rgba(0,0,0,0.5); }
             50%       { box-shadow: 0 0 60px rgba(250, 204, 21, 0.4), 0 8px 32px rgba(0,0,0,0.5); }
           }
+          @keyframes modalSlideIn {
+            from { opacity: 0; transform: scale(0.92) translateY(20px); }
+            to   { opacity: 1; transform: scale(1) translateY(0); }
+          }
+          @keyframes backdropFadeIn {
+            from { opacity: 0; }
+            to   { opacity: 1; }
+          }
+          @keyframes confettiBurst {
+            0%   { transform: scale(0) rotate(0deg); opacity: 1; }
+            70%  { opacity: 1; }
+            100% { transform: scale(1.6) rotate(720deg); opacity: 0; }
+          }
           .achievement-card {
             background: rgba(15, 23, 42, 0.55);
             backdrop-filter: blur(24px);
@@ -1103,6 +1117,33 @@ export default function Portfolio() {
             transform: translateY(-4px) scale(1.06);
             background: rgba(250, 204, 21, 0.15);
             border-color: rgba(250, 204, 21, 0.5);
+          }
+          /* Modal */
+          .achievement-modal-backdrop {
+            animation: backdropFadeIn 0.25s ease forwards;
+          }
+          .achievement-modal {
+            animation: modalSlideIn 0.35s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+          }
+          .modal-view-btn {
+            background: #4ade80;
+            color: #111;
+            font-weight: 800;
+            border-radius: 10px;
+            padding: 14px 24px;
+            font-size: 15px;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            width: 100%;
+            text-decoration: none;
+          }
+          .modal-view-btn:hover {
+            background: #22c55e;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(74, 222, 128, 0.35);
           }
           html.light-mode .achievement-card {
             background: rgba(255, 255, 255, 0.75);
@@ -1363,180 +1404,126 @@ export default function Portfolio() {
               </p>
             </motion.div>
 
-            {/* Main Achievement Card */}
-            <motion.div 
-              initial={{ opacity: 0, scale: 0.95, y: 40 }}
-              whileInView={{ opacity: 1, scale: 1, y: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.8, ease: "easeOut" }}
-              className="achievement-card rounded-3xl overflow-hidden" 
-            >
-              <div className="flex flex-col lg:flex-row">
+            {/* Achievement Cards Grid */}
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
 
-                {/* LEFT — Photo Gallery */}
-                <div className="lg:w-[46%] relative flex-shrink-0 overflow-hidden bg-slate-950 min-h-[260px] sm:min-h-[340px] lg:min-h-0">
-                  {/* Primary Photo */}
-                  <div className="absolute inset-0 flex items-center justify-center">
+              {/* Card 1 — SU Hackathon */}
+              <motion.div 
+                initial={{ opacity: 0, scale: 0.95, y: 40 }}
+                whileInView={{ opacity: 1, scale: 1, y: 0 }}
+                viewport={{ once: true, margin: "-100px" }}
+                transition={{ duration: 0.8, ease: "easeOut" }}
+                className="achievement-card rounded-3xl overflow-hidden cursor-pointer group"
+                onClick={() => setActiveAchievement('su')}
+              >
+                <div className="flex flex-col">
+                  {/* Photo */}
+                  <div className="relative overflow-hidden bg-slate-950 h-56 sm:h-64">
                     <img
                       src="https://res.cloudinary.com/dgib19szk/image/upload/v1774690494/WhatsApp_Image_2026-03-19_at_9.42.24_PM_fkctpx.jpg"
-                      alt="SU Hackathon 2026 team celebrating"
-                      className="achievement-image w-full h-full object-contain"
-                      style={{ minHeight: '100%' }}
+                      alt="SU Hackathon 2026 team"
+                      className="achievement-image w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                     />
-                    {/* Gradient overlay for blending into right panel */}
-                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-slate-900/70 hidden lg:block"></div>
-                    <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-transparent to-transparent lg:hidden"></div>
-                  </div>
-
-                  {/* Second Photo — thumbnail overlay */}
-                  <motion.div 
-                    initial={{ opacity: 0, x: 20, y: 20 }}
-                    whileInView={{ opacity: 1, x: 0, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.6, delay: 0.4 }}
-                    className="absolute bottom-4 right-4 w-28 sm:w-36 aspect-video rounded-xl overflow-hidden border-2 border-yellow-400/50 shadow-xl z-10"
-                  >
-                    <img
-                      src="https://res.cloudinary.com/dgib19szk/image/upload/v1774690494/WhatsApp_Image_2026-03-19_at_9.44.37_PM_qy2ggp.jpg"
-                      alt="SU Hackathon 2026 award ceremony"
-                      className="w-full h-full object-cover hover:scale-110 transition-transform duration-500"
-                    />
-                    {/* Tiny label */}
-                    <div className="absolute inset-0 flex items-end p-1">
-                      <span className="text-[9px] font-bold text-white bg-black/60 px-1.5 py-0.5 rounded-md">Award Ceremony</span>
+                    <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-transparent"></div>
+                    {/* Mini thumbnail */}
+                    <div className="absolute bottom-3 right-3 w-24 aspect-video rounded-lg overflow-hidden border-2 border-yellow-400/50 shadow-xl">
+                      <img
+                        src="https://res.cloudinary.com/dgib19szk/image/upload/v1774690494/WhatsApp_Image_2026-03-19_at_9.44.37_PM_qy2ggp.jpg"
+                        alt="Award ceremony"
+                        className="w-full h-full object-cover"
+                      />
                     </div>
-                  </motion.div>
-                </div>
-
-                {/* RIGHT — Content */}
-                <div className="lg:w-[54%] flex flex-col justify-center p-7 sm:p-9 lg:p-12 relative">
-                  {/* Trophy floating icon */}
-                  <div className="absolute top-6 right-6 text-4xl trophy-icon select-none opacity-60">🏆</div>
-
-                  <motion.div
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true, margin: "-50px" }}
-                    variants={{
-                      visible: { transition: { staggerChildren: 0.1, delayChildren: 0.2 } },
-                      hidden: {}
-                    }}
-                  >
-                    {/* Winner badge pill */}
-                    <motion.div 
-                      variants={{
-                        hidden: { opacity: 0, y: 20 },
-                        visible: { opacity: 1, y: 0 }
-                      }}
-                      className="inline-flex items-center gap-2 w-fit mb-5 px-4 py-1.5 rounded-full bg-yellow-500/10 border border-yellow-500/30"
-                    >
+                    {/* Click hint */}
+                    <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                      <div className="bg-black/50 backdrop-blur-sm px-5 py-2.5 rounded-full text-white font-bold text-sm flex items-center gap-2">
+                        <span>👁</span> View Details
+                      </div>
+                    </div>
+                  </div>
+                  {/* Content */}
+                  <div className="p-6">
+                    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-yellow-500/10 border border-yellow-500/30 mb-3">
                       <span className="text-xs">🥇</span>
                       <span className="text-xs font-black uppercase tracking-widest winner-badge">Hackathon Winner</span>
-                    </motion.div>
-
-                    {/* Title */}
-                    <motion.h3 
-                      variants={{
-                        hidden: { opacity: 0, x: -20 },
-                        visible: { opacity: 1, x: 0 }
-                      }}
-                      className="text-2xl sm:text-3xl lg:text-4xl font-black text-white leading-tight mb-3"
+                    </div>
+                    <h3 className="text-xl sm:text-2xl font-black text-white leading-tight mb-1">🏆 SU Hackathon 2026</h3>
+                    <p className="text-yellow-400 font-semibold text-sm mb-2">1st Place — Team VentureHack</p>
+                    <p className="text-slate-400 text-sm leading-relaxed line-clamp-2">Built KisanDost — an AI-powered precision agriculture platform, winning 1st place at Sangam University Hackathon.</p>
+                    <button
+                      onClick={(e) => { e.stopPropagation(); setActiveAchievement('su'); }}
+                      className="mt-4 flex items-center gap-2 text-yellow-400 hover:text-yellow-300 font-bold text-sm transition-colors"
                     >
-                      🏆 SU Hackathon 2026 Winner<br />
-                      <span className="gradient-text">1st Place</span>
-                    </motion.h3>
-
-                    {/* Subtitle */}
-                    <motion.p 
-                      variants={{
-                        hidden: { opacity: 0, x: -20 },
-                        visible: { opacity: 1, x: 0 }
-                      }}
-                      className="text-yellow-400/80 font-semibold text-sm sm:text-base mb-4"
-                    >
-                      Building impactful AI solutions under pressure
-                    </motion.p>
-
-                    {/* Divider */}
-                    <motion.div 
-                      variants={{
-                        hidden: { opacity: 0, scaleX: 0 },
-                        visible: { opacity: 1, scaleX: 1 }
-                      }}
-                      style={{ originX: 0 }}
-                      className="w-16 h-0.5 bg-gradient-to-r from-yellow-400 to-purple-500 rounded-full mb-5"
-                    ></motion.div>
-
-                    {/* Description */}
-                    <motion.p 
-                      variants={{
-                        hidden: { opacity: 0, y: 20 },
-                        visible: { opacity: 1, y: 0 }
-                      }}
-                      className="text-slate-300 leading-relaxed text-sm sm:text-base mb-7 max-w-md"
-                    >
-                      Out of dozens of teams, we built <span className="text-white font-semibold">KisanDost</span> — an AI-powered precision agriculture platform for Indian farmers — and secured <span className="text-yellow-400 font-bold">1st place</span> at Sangam University's Hackathon 2026, Bhilwara, Rajasthan. Satellite crop monitoring, profit prediction &amp; multilingual support, shipped in under 24 hours.
-                    </motion.p>
-
-                    {/* Team Members */}
-                    <motion.div
-                      variants={{
-                        hidden: { opacity: 0, y: 20 },
-                        visible: { opacity: 1, y: 0 }
-                      }}
-                    >
-                      <p className="text-xs uppercase tracking-widest text-slate-500 font-bold mb-3">Team · VentureHack</p>
-                      <div className="flex flex-wrap gap-2">
-                        {[
-                          { name: 'Prashant Parmar',  role: 'Model Training' },
-                          { name: 'Anisha Chhajer',   role: 'Features' },
-                          { name: 'Manan Patel',      role: 'UI/UX & Architecture' },
-                          { name: 'Aryan Sabasana',   role: 'Model Training' },
-                        ].map((m, i) => (
-                          <motion.div
-                            key={i}
-                            initial={{ opacity: 0, scale: 0.8 }}
-                            whileInView={{ opacity: 1, scale: 1 }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 0.4, delay: 0.5 + (i * 0.1) }}
-                            className="member-pill flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-800/60 border border-slate-700/50 cursor-default"
-                          >
-                            <div className="w-6 h-6 rounded-full bg-gradient-to-br from-yellow-400 to-purple-600 flex items-center justify-center text-xs font-black text-white flex-shrink-0">
-                              {m.name.charAt(0)}
-                            </div>
-                            <div>
-                              <span className="text-xs font-bold text-white block leading-none">{m.name}</span>
-                              <span className="text-[10px] text-slate-400 leading-none">{m.role}</span>
-                            </div>
-                          </motion.div>
-                        ))}
-                      </div>
-                    </motion.div>
-
-                    {/* CTA */}
-                    <motion.div 
-                      variants={{
-                        hidden: { opacity: 0, y: 20 },
-                        visible: { opacity: 1, y: 0 }
-                      }}
-                      className="mt-8"
-                    >
-                      <a
-                        href="https://venturehack.netlify.app"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 px-6 py-3 rounded-xl font-bold text-sm text-white bg-gradient-to-r from-yellow-500 to-orange-500 hover:from-yellow-400 hover:to-orange-400 transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-yellow-500/30"
-                      >
-                        <ExternalLink size={15} />
-                        View Live Project
-                      </a>
-                    </motion.div>
-                  </motion.div>
+                      View Details <ArrowRight size={15} />
+                    </button>
+                  </div>
                 </div>
-              </div>
-            </motion.div>
+              </motion.div>
+
+
+            </div>{/* end grid */}
           </div>
         </section>
+
+        {/* ===== Achievement Modal ===== */}
+        {activeAchievement && (
+          <div
+            className="achievement-modal-backdrop fixed inset-0 z-[9000] flex items-center justify-center p-4"
+            style={{ background: 'rgba(0,0,0,0.75)', backdropFilter: 'blur(8px)' }}
+            onClick={() => setActiveAchievement(null)}
+          >
+            <div
+              className="achievement-modal w-full max-w-3xl rounded-2xl overflow-hidden shadow-2xl"
+              style={{ background: '#111827', border: '1px solid rgba(74,222,128,0.2)' }}
+              onClick={(e) => e.stopPropagation()}
+            >
+              <div className="flex flex-col sm:flex-row">
+                  {/* Left – photo */}
+                  <div className="sm:w-[42%] relative bg-[#f5f0e8] flex-shrink-0 min-h-[240px]">
+                    <img
+                      src="https://res.cloudinary.com/dgib19szk/image/upload/v1774690494/WhatsApp_Image_2026-03-19_at_9.42.24_PM_fkctpx.jpg"
+                      alt="SU Hackathon 2026"
+                      className="w-full h-full object-cover"
+                      style={{ minHeight: '240px' }}
+                    />
+                    <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent p-3">
+                      <p className="text-white text-xs font-bold">Winners of SU Hackathon 2026, Bhilwara</p>
+                    </div>
+                  </div>
+                  {/* Right – details */}
+                  <div className="sm:w-[58%] p-7 flex flex-col justify-between relative">
+                    {/* Close */}
+                    <button onClick={() => setActiveAchievement(null)} className="absolute top-4 right-4 text-slate-400 hover:text-white transition-colors text-xl leading-none">✕</button>
+                    <div>
+                      <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-yellow-500/10 border border-yellow-500/30 mb-4">
+                        <span className="text-xs">🥇</span>
+                        <span className="text-xs font-black uppercase tracking-widest winner-badge">Hackathon Winner</span>
+                      </div>
+                      <h3 className="text-2xl font-black text-white mb-1">SU Hackathon 2026</h3>
+                      <p className="text-yellow-400 font-bold text-base mb-3">Sangam University, Bhilwara</p>
+                      <p className="text-slate-300 text-sm mb-1"><span className="text-yellow-400 font-bold">🥇 1st Rank</span> — Team VentureHack</p>
+                      <div className="w-12 h-0.5 bg-gradient-to-r from-yellow-400 to-purple-500 rounded-full my-3"></div>
+                      <p className="text-slate-300 text-sm leading-relaxed mb-4">
+                        Built <span className="text-white font-semibold">KisanDost</span> — an AI-powered precision agriculture platform for Indian farmers featuring satellite crop monitoring, profit prediction &amp; multilingual support. Shipped in <strong className="text-yellow-400">under 24 hours</strong>.
+                      </p>
+                      <div className="flex flex-wrap gap-2 mb-5">
+                        {['24 Hours', 'AI + Cloud', 'React JS', 'Python'].map(tag => (
+                          <span key={tag} className="px-3 py-1 rounded-full text-xs font-bold bg-slate-800 text-slate-300 border border-slate-700">{tag}</span>
+                        ))}
+                      </div>
+                    </div>
+                    <a
+                      href="https://venturehack.netlify.app"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="modal-view-btn"
+                    >
+                      View Project →
+                    </a>
+                  </div>
+                </div>
+            </div>
+          </div>
+        )}
 
         {/* Projects Section */}
         <section id="projects" className="py-10 sm:py-12 md:py-16 relative overflow-hidden">
