@@ -5,7 +5,7 @@ const Navbar = ({ isDark, setIsDark }) => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('');
 
-  const navItems = ['About', 'Achievements', 'Projects', 'Certificates', 'Skills', 'Education', 'Contact'];
+  const navItems = ['About', 'Skills', 'Projects', 'Figma Design', 'Certificates', 'Achievements', 'Education', 'Contact'];
 
   useEffect(() => {
     const observerOptions = {
@@ -25,7 +25,7 @@ const Navbar = ({ isDark, setIsDark }) => {
     const observer = new IntersectionObserver(observerCallback, observerOptions);
 
     navItems.forEach((item) => {
-      const element = document.getElementById(item.toLowerCase());
+      const element = document.getElementById(item.toLowerCase().replace(/\s+/g, '-'));
       if (element) observer.observe(element);
     });
 
@@ -39,11 +39,12 @@ const Navbar = ({ isDark, setIsDark }) => {
 
         <div className="hidden md:flex gap-10 items-center">
           {navItems.map((item, idx) => {
-            const isActive = activeSection === item.toLowerCase();
+            const sectionId = item.toLowerCase().replace(/\s+/g, '-');
+            const isActive = activeSection === sectionId;
             return (
               <a
                 key={idx}
-                href={`#${item.toLowerCase()}`}
+                href={`#${sectionId}`}
                 className={`font-semibold transition-all duration-300 relative group ${
                   isActive ? 'text-white scale-110' : 'text-slate-300 hover:text-blue-400'
                 }`}
@@ -92,11 +93,12 @@ const Navbar = ({ isDark, setIsDark }) => {
           </div>
           <div className="flex-1 flex flex-col items-center justify-center gap-8 px-6">
             {navItems.map((item, idx) => {
-              const isActive = activeSection === item.toLowerCase();
+              const sectionId = item.toLowerCase().replace(/\s+/g, '-');
+              const isActive = activeSection === sectionId;
               return (
                 <a
                   key={idx}
-                  href={`#${item.toLowerCase()}`}
+                  href={`#${sectionId}`}
                   className={`text-xl font-semibold transition-colors py-2 ${
                     isActive ? 'text-blue-400 scale-110' : 'text-slate-300 hover:text-blue-400'
                   }`}

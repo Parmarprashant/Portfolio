@@ -101,11 +101,11 @@ const About = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: 0.7, ease: 'easeOut' }}
-          className="glass-effect relative overflow-hidden rounded-3xl border border-blue-500/20 p-12"
+          className="glass-effect relative overflow-hidden rounded-3xl border border-blue-500/20 p-8 md:p-12 mt-24 md:mt-32"
         >
           <div className="pointer-events-none absolute inset-x-10 top-0 h-24 bg-gradient-to-r from-blue-500/10 via-purple-500/10 to-transparent blur-2xl" />
-          <h3 className="mb-3 text-3xl font-bold text-white">Skills & Technologies</h3>
-          <p className="mb-8 max-w-2xl text-slate-300">
+          <h3 className="mb-3 text-3xl md:text-4xl font-black text-white gradient-text">Skills & Technologies</h3>
+          <p className="mb-8 max-w-2xl text-xl text-slate-300">
             Tools I use to design, build, and ship responsive web experiences.
           </p>
 

@@ -2,6 +2,14 @@ export const certificates = [
   { id: 1, title: 'CS105: Introduction to Python', issuer: 'Saylor.org', date: 'December 19, 2025', image: 'https://res.cloudinary.com/dgib19szk/image/upload/v1767782202/5645318445PP-1_n1xomm.png' },
   { id: 2, title: 'Building with Artificial Intelligence', issuer: 'Saylor.org', date: 'December 19, 2025', image: 'https://res.cloudinary.com/dgib19szk/image/upload/v1767782202/1755841329PP-1_j6rc80.png' },
   { id: 3, title: 'Ai Tools workshop', issuer: 'Be10X', date: 'October 26th, 2025', image: 'https://res.cloudinary.com/dgib19szk/image/upload/v1767782202/Certificate-1_z9oatd.png' },
+  { 
+    id: 4, 
+    title: 'Dev Heat Hackathon Participation', 
+    issuer: 'IIIT Surat', 
+    date: 'Spring Fiesta 2025', 
+    image: 'https://res.cloudinary.com/dgib19szk/image/upload/v1776451222/d7cfd351-88b6-4573-bff7-f312e86a0ae6_page-0001_crdcnv.jpg',
+    description: 'Received a Certificate of Participation for contributing to the Dev Heat Hackathon at Spring Fiesta, organized by IIIT Surat. This experience enhanced my problem-solving, teamwork, and real-world development skills in a competitive environment.'
+  },
 ];
 
 export const achievements = [
@@ -140,6 +148,27 @@ export const projects = [
     live: 'https://bliss-clone.netlify.app',
     youtube: 'https://youtu.be/lVykFH56af8?si=y45U3vmHcRnK3Dgd'
   },
+];
+
+export const figmaDesigns = [
+  {
+    id: 1,
+    title: 'Modern E-commerce App',
+    desc: 'Minimalist mobile shopping experience with intuitive navigation and checkout flow.',
+    image: 'https://images.unsplash.com/photo-1586717791821-3f44a563dc4c?q=80&w=800&auto=format&fit=crop',
+  },
+  {
+    id: 2,
+    title: 'Analytics Dashboard',
+    desc: 'Data-driven SaaS interface featuring complex visualizations and team collaboration tools.',
+    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=800&auto=format&fit=crop',
+  },
+  {
+    id: 3,
+    title: 'Travel Booking Platform',
+    desc: 'End-to-end travel experience design from destination discovery to final booking.',
+    image: 'https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?q=80&w=800&auto=format&fit=crop',
+  }
 ];
 
 export const education = [

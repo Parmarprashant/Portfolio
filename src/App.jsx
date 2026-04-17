@@ -8,6 +8,7 @@ import Hero from './components/Hero';
 const About = lazy(() => import('./components/About'));
 const Achievements = lazy(() => import('./components/Achievements'));
 const Projects = lazy(() => import('./components/Projects'));
+const FigmaDesign = lazy(() => import('./components/FigmaDesign'));
 const Certificates = lazy(() => import('./components/Certificates'));
 const Education = lazy(() => import('./components/Education'));
 const Contact = lazy(() => import('./components/Contact'));
@@ -74,9 +75,10 @@ export default function Portfolio() {
         <Hero />
         <Suspense fallback={<div className="h-20" />}>
           <About />
-          <Achievements isLoading={isLoading} />
           <Projects />
+          <FigmaDesign />
           <Certificates />
+          <Achievements isLoading={isLoading} />
           <Education />
           <Contact />
           <Footer />

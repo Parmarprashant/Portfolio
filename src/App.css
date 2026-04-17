@@ -350,6 +350,36 @@
           /* Enhanced heading animations */
           .section-heading {
             display: block;
+            position: relative;
+          }
+
+          .heading-primary {
+            background: linear-gradient(to right, #ffffff, #f1f5f9, #cbd5e1);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+          }
+
+          html.light-mode .heading-primary {
+            background: linear-gradient(to right, #0f172a, #1e293b, #334155);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+          }
+
+          .heading-secondary {
+            background: linear-gradient(to right, #fde047, #fbbf24, #f59e0b);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+          }
+
+          .text-description {
+            color: rgba(203, 213, 225, 0.9);
+          }
+
+          html.light-mode .text-description {
+            color: #475569;
           }
 
           .scroll-visible-scale {

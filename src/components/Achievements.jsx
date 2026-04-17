@@ -565,16 +565,16 @@ const Achievements = ({ isLoading = false }) => {
               <span className="h-px w-10 bg-gradient-to-r from-transparent via-yellow-400/70 to-transparent" />
             </div>
 
-            <h2 className="mb-4 font-serif text-5xl font-black leading-none tracking-tight sm:text-6xl md:text-7xl">
-              <span className="bg-gradient-to-r from-white via-slate-100 to-slate-300 bg-clip-text text-transparent drop-shadow-[0_4px_30px_rgba(255,255,255,0.08)]">
+            <h2 className="mb-4 font-serif text-5xl font-black leading-none tracking-tight sm:text-6xl md:text-7xl section-heading">
+              <span className="heading-primary">
                 Achieve
               </span>
-              <span className="bg-gradient-to-r from-yellow-300 via-amber-400 to-yellow-500 bg-clip-text text-transparent drop-shadow-[0_0_18px_rgba(234,179,8,0.25)]">
+              <span className="heading-secondary">
                 ments
               </span>
             </h2>
 
-            <p className="mx-auto max-w-xl text-base font-light leading-relaxed text-slate-300/90 sm:text-lg">
+            <p className="mx-auto max-w-xl text-base font-light leading-relaxed text-description sm:text-lg">
               Proud milestones, real-world wins, and standout moments from the journey.
             </p>
           </motion.div>

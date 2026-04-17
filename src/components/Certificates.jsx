@@ -99,6 +99,14 @@ const Certificates = () => {
                         <p className="text-xl font-bold text-purple-400">{certificate.date}</p>
                       </div>
                     </div>
+
+                    {certificate.description && (
+                      <div className="border-t border-blue-500/10 pt-4">
+                        <p className="text-sm leading-relaxed text-slate-300">
+                          {certificate.description}
+                        </p>
+                      </div>
+                    )}
                   </div>
 
                   <div className="overflow-hidden rounded-xl border border-blue-500/20 shadow-lg">
