@@ -58,6 +58,16 @@
   }
 }
 
+/* ===== UTILITY CLASSES ===== */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
 /* ===== ANIMATION CLASSES ===== */
 .animate-slide-up,
 .animate-slide-in-up {

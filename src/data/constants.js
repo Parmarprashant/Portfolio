@@ -4,6 +4,76 @@ export const certificates = [
   { id: 3, title: 'Ai Tools workshop', issuer: 'Be10X', date: 'October 26th, 2025', image: 'https://res.cloudinary.com/dgib19szk/image/upload/v1767782202/Certificate-1_z9oatd.png' },
 ];
 
+export const achievements = [
+  {
+    id: 'su-hackathon-2026',
+    title: 'Sangam University',
+    badge: 'Offline Hackathon Winner',
+    subtitle: 'Bhilwara, Rajasthan - 2025',
+    location: 'Sangam University, Bhilwara',
+    project: 'KisanDost',
+    duration: '36-Hour Build',
+    rank: '01',
+    rankLabel: '1st Place',
+    summary:
+      'Built KisanDost, an AI-powered precision agriculture platform for Indian farmers, and won 1st place with a working product that solved a real problem.',
+    detail:
+      'Built KisanDost, an AI-powered precision agriculture platform featuring satellite crop monitoring, profit prediction, and multilingual support. The full product was designed and shipped in under 36 hours.',
+    heroImage:
+      'https://res.cloudinary.com/dgib19szk/image/upload/v1774690494/WhatsApp_Image_2026-03-19_at_9.42.24_PM_fkctpx.jpg',
+    sideImage:
+      'https://res.cloudinary.com/dgib19szk/image/upload/v1774690494/WhatsApp_Image_2026-03-19_at_9.44.37_PM_qy2ggp.jpg',
+    galleryImages: [
+      'https://res.cloudinary.com/dgib19szk/image/upload/v1774690494/WhatsApp_Image_2026-03-19_at_9.42.24_PM_fkctpx.jpg',
+      'https://res.cloudinary.com/dgib19szk/image/upload/v1774690494/WhatsApp_Image_2026-03-19_at_9.44.37_PM_qy2ggp.jpg',
+      'https://res.cloudinary.com/dgib19szk/image/upload/v1774690494/WhatsApp_Image_2026-03-19_at_9.42.24_PM_fkctpx.jpg',
+      'https://res.cloudinary.com/dgib19szk/image/upload/v1774690494/WhatsApp_Image_2026-03-19_at_9.44.37_PM_qy2ggp.jpg',
+      'https://res.cloudinary.com/dgib19szk/image/upload/v1774690494/WhatsApp_Image_2026-03-19_at_9.42.24_PM_fkctpx.jpg'
+    ],
+    memoryLabel: 'Team at Sangam University',
+    footerLabel: 'SU Hackathon',
+    liveUrl: 'https://venturehack.netlify.app',
+    tags: ['React', 'Python', 'AI'],
+    detailTags: ['36 Hours', 'AI + Cloud', 'React JS', 'Python'],
+    featured: true,
+    accent: 'gold',
+  },
+  {
+    id: 'ganpat-hackathon-2025',
+    title: 'Ganpat University',
+    badge: 'Offline Hackathon Winner',
+    subtitle: 'Mehsana, Gujarat - 2025',
+    location: 'Ganpat University, Mehsana',
+    project: 'CampusFlow',
+    duration: '30-Hour Build',
+    rank: '02',
+    rankLabel: '2nd Place',
+    summary:
+      'Clinched 2nd place at Ganpat University Mehsana with a polished campus operations concept focused on usability, execution, and production-ready thinking.',
+    detail:
+      'Built CampusFlow, a smart campus operations dashboard concept with AI-powered scheduling, issue reporting, and analytics. This dummy achievement is included to help you scale the section with future real wins.',
+    heroImage:
+      'https://drive.google.com/thumbnail?id=1fejFr1tLrz-jdF8l9q8zuigAj3JGGEnU&sz=w1600',
+    sideImage:
+      'https://drive.google.com/thumbnail?id=1ZOVsDTL-KR7OWXSfNDy7xHYtHbDvzWcQ&sz=w1600',
+    galleryImages: [
+      'https://drive.google.com/thumbnail?id=1fejFr1tLrz-jdF8l9q8zuigAj3JGGEnU&sz=w1600',
+      'https://drive.google.com/thumbnail?id=1ZOVsDTL-KR7OWXSfNDy7xHYtHbDvzWcQ&sz=w1600',
+      'https://drive.google.com/thumbnail?id=1hxB0Nmh9FQ1Dd8mcQN4v_ZxM5lxvL6R7&sz=w1600',
+      'https://drive.google.com/thumbnail?id=1fejFr1tLrz-jdF8l9q8zuigAj3JGGEnU&sz=w1600',
+      'https://drive.google.com/thumbnail?id=1ZOVsDTL-KR7OWXSfNDy7xHYtHbDvzWcQ&sz=w1600'
+    ],
+    memoryLabel: 'Award Winning Moment',
+    footerLabel: 'Convergence Ganpat 2026',
+    liveUrl: '/IMG_7225.MOV',
+    videoUrl: '/IMG_7225.MOV',
+    tags: ['Product', 'UI/UX', 'AI'],
+    detailTags: ['Dummy Data', 'Hackathon', 'Dashboard', 'Prototype'],
+    featured: false,
+    accent: 'violet',
+  },
+];
+
 export const projects = [
   {
     title: 'KisanDost',

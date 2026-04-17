@@ -1,87 +1,116 @@
-import React, { useState } from 'react';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
+import React, { useEffect, useRef, useState } from 'react';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import { certificates } from '../data/constants';
 
 const Certificates = () => {
-  const [certIndex, setCertIndex] = useState(0);
+  const sectionRef = useRef(null);
+  const viewportRef = useRef(null);
+  const trackRef = useRef(null);
+  const [maxTranslate, setMaxTranslate] = useState(0);
+  const [sectionHeight, setSectionHeight] = useState('260vh');
+
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ['start start', 'end end'],
+  });
+
+  const x = useTransform(scrollYProgress, [0, 1], [0, -maxTranslate]);
+
+  useEffect(() => {
+    const updateMeasurements = () => {
+      if (!viewportRef.current || !trackRef.current || typeof window === 'undefined') {
+        return;
+      }
+
+      const viewportWidth = viewportRef.current.clientWidth;
+      const viewportHeight = window.innerHeight;
+      const nextMaxTranslate = Math.max(
+        0,
+        trackRef.current.scrollWidth - viewportWidth
+      );
+
+      setMaxTranslate(nextMaxTranslate);
+      setSectionHeight(`${Math.max(viewportHeight * 2.2, viewportHeight + nextMaxTranslate + 240)}px`);
+    };
+
+    updateMeasurements();
+    window.addEventListener('resize', updateMeasurements);
+
+    return () => window.removeEventListener('resize', updateMeasurements);
+  }, []);
 
   return (
-    <section id="certificates" className="py-10 sm:py-12 md:py-16 relative overflow-hidden">
-      <div className="absolute inset-0 opacity-20">
-        <div className="absolute top-1/2 left-0 w-96 h-96 bg-purple-600 rounded-full mix-blend-screen filter blur-3xl opacity-30 animate-blob animation-delay-2000"></div>
-      </div>
-
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 relative z-10">
-        <div className="text-center mb-10 md:mb-16 scroll-animate-up">
-          <h2 className="text-4xl sm:text-5xl md:text-6xl font-black mb-4 md:mb-6 tracking-tight section-heading">
-            <span className="gradient-text">Certificates</span>
-          </h2>
-          <p className="text-xl text-slate-300 scroll-animate-up" style={{ animationDelay: '0.2s' }}>Professional achievements and credentials</p>
+    <section
+      ref={sectionRef}
+      id="certificates"
+      className="relative"
+      style={{ height: sectionHeight }}
+    >
+      <div className="sticky top-0 flex min-h-screen items-center overflow-hidden py-10 sm:py-12 md:py-16">
+        <div className="absolute inset-0 opacity-20">
+          <div className="absolute left-0 top-1/2 h-96 w-96 -translate-y-1/2 rounded-full bg-purple-600 opacity-20 blur-3xl" />
+          <div className="absolute right-0 top-1/3 h-80 w-80 rounded-full bg-blue-600 opacity-20 blur-3xl" />
         </div>
 
-        <div className="glass-effect rounded-3xl p-8 md:p-12 border border-blue-500/30 scroll-animate-up overflow-hidden">
-          <div className="flex items-center justify-between mb-10">
-            <div className="inline-block px-4 py-2 bg-blue-500/20 text-blue-400 rounded-full text-sm font-bold border border-blue-500/30">
-              Certificate {certIndex + 1} of {certificates.length}
-            </div>
-            <div className="flex gap-2">
-              <div className="w-2 h-2 bg-blue-500 rounded-full animate-pulse"></div>
-              <div className="w-2 h-2 bg-purple-500 rounded-full animate-pulse" style={{ animationDelay: '0.2s' }}></div>
-              <div className="w-2 h-2 bg-blue-500 rounded-full animate-pulse" style={{ animationDelay: '0.4s' }}></div>
-            </div>
+        <div className="relative z-10 mx-auto w-full max-w-[1600px] px-4 sm:px-6">
+          <div className="mb-10 text-center md:mb-14">
+            <h2 className="section-heading mb-4 text-4xl font-black tracking-tight sm:text-5xl md:text-6xl">
+              <span className="gradient-text">Certificates</span>
+            </h2>
+            <p className="text-xl text-slate-300">
+              Scroll through professional achievements and credentials
+            </p>
           </div>
 
-          <div className="space-y-8 mb-10">
-            <div className="animate-fade-scale">
-              <p className="text-slate-400 text-sm mb-2 uppercase tracking-wider font-bold">Certificate</p>
-              <h3 className="text-3xl md:text-4xl font-black text-white">{certificates[certIndex].title}</h3>
-            </div>
-
-            <div className="grid md:grid-cols-2 gap-8 pt-4 border-t border-blue-500/20">
-              <div className="animate-fade-scale animation-delay-100">
-                <p className="text-slate-400 text-sm mb-2 font-bold">Issued By</p>
-                <p className="text-xl font-bold text-blue-400">{certificates[certIndex].issuer}</p>
-              </div>
-              <div className="animate-fade-scale animation-delay-200">
-                <p className="text-slate-400 text-sm mb-2 font-bold">Date Issued</p>
-                <p className="text-xl font-bold text-purple-400">{certificates[certIndex].date}</p>
-              </div>
-            </div>
-          </div>
-
-          <div className="mb-10 rounded-xl overflow-hidden border border-blue-500/20 hover:border-blue-500/50 transition-all shadow-lg hover:shadow-blue-500/20">
-            <img
-              src={certificates[certIndex].image}
-              alt={certificates[certIndex].title}
-              className="w-full h-auto hover:scale-105 transition-transform duration-500"
-            />
-          </div>
-
-          <div className="flex justify-center gap-6 items-center">
-            <button
-              onClick={() => setCertIndex((certIndex - 1 + certificates.length) % certificates.length)}
-              className="p-3 rounded-full bg-gradient-to-r from-blue-600 to-purple-600 text-white hover:from-blue-500 hover:to-purple-500 transition-all transform hover:scale-110 shadow-lg hover:shadow-blue-500/50"
+          <div ref={viewportRef} className="overflow-hidden">
+            <motion.div
+              ref={trackRef}
+              style={{ x }}
+              className="flex gap-6 pr-4 will-change-transform md:gap-8 md:pr-8"
             >
-              <ChevronLeft size={24} />
-            </button>
-            <div className="flex gap-3">
-              {certificates.map((_, idx) => (
-                <button
-                  key={idx}
-                  onClick={() => setCertIndex(idx)}
-                  className={`rounded-full transition-all duration-300 ${certIndex === idx
-                    ? 'w-8 h-3 bg-gradient-to-r from-blue-500 to-purple-600'
-                    : 'w-3 h-3 bg-slate-700 hover:bg-slate-600'
-                    }`}
-                />
+              {certificates.map((certificate, index) => (
+                <article
+                  key={certificate.id}
+                  className="glass-effect w-[84vw] max-w-[680px] shrink-0 rounded-3xl border border-blue-500/30 p-6 md:w-[68vw] md:p-8"
+                >
+                  <div className="mb-8 flex items-center justify-between gap-4">
+                    <div className="inline-block rounded-full border border-blue-500/30 bg-blue-500/20 px-4 py-2 text-sm font-bold text-blue-400">
+                      Certificate {index + 1} of {certificates.length}
+                    </div>
+                  </div>
+
+                  <div className="mb-8 space-y-8">
+                    <div>
+                      <p className="mb-2 text-sm font-bold uppercase tracking-wider text-slate-400">
+                        Certificate
+                      </p>
+                      <h3 className="text-3xl font-black text-white md:text-4xl">
+                        {certificate.title}
+                      </h3>
+                    </div>
+
+                    <div className="grid gap-6 border-t border-blue-500/20 pt-4 md:grid-cols-2">
+                      <div>
+                        <p className="mb-2 text-sm font-bold text-slate-400">Issued By</p>
+                        <p className="text-xl font-bold text-blue-400">{certificate.issuer}</p>
+                      </div>
+                      <div>
+                        <p className="mb-2 text-sm font-bold text-slate-400">Date Issued</p>
+                        <p className="text-xl font-bold text-purple-400">{certificate.date}</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="overflow-hidden rounded-xl border border-blue-500/20 shadow-lg">
+                    <img
+                      src={certificate.image}
+                      alt={certificate.title}
+                      className="h-[320px] w-full object-cover md:h-[420px]"
+                    />
+                  </div>
+                </article>
               ))}
-            </div>
-            <button
-              onClick={() => setCertIndex((certIndex + 1) % certificates.length)}
-              className="p-3 rounded-full bg-gradient-to-r from-blue-600 to-purple-600 text-white hover:from-blue-500 hover:to-purple-500 transition-all transform hover:scale-110 shadow-lg hover:shadow-blue-500/50"
-            >
-              <ChevronRight size={24} />
-            </button>
+            </motion.div>
           </div>
         </div>
       </div>

@@ -67,11 +67,11 @@ export default function Portfolio() {
     <>
       {isLoading && <LoadingScreen />}
 
-      <div className={`min-h-screen ${isDark ? 'bg-gradient-to-b from-slate-950 via-slate-900 to-black' : 'bg-gradient-to-b from-slate-50 via-blue-50 to-white'} text-white overflow-x-hidden`}>
+      <div className={`min-h-screen ${isDark ? 'bg-gradient-to-b from-slate-950 via-slate-900 to-black' : 'bg-gradient-to-b from-slate-50 via-blue-50 to-white'} text-white overflow-x-clip`}>
         <Navbar isDark={isDark} setIsDark={setIsDark} />
         <Hero />
         <About />
-        <Achievements />
+        <Achievements isLoading={isLoading} />
         <Projects />
         <Certificates />
         <Education />
