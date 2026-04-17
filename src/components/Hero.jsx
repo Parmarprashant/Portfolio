@@ -38,15 +38,27 @@ const Hero = () => {
         {/* Profile Image */}
         <div className="flex justify-center items-center relative z-10 animate-slide-in-right h-full min-h-[280px] sm:min-h-0">
           <div className="relative animate-float">
-            <div className="relative w-64 h-64 sm:w-72 sm:h-72 md:w-96 md:h-96 rounded-full overflow-hidden border-4 border-blue-500/50 shadow-2xl animate-glow hover:animate-pulse-scale">
-              <img
-                src="https://res.cloudinary.com/dgib19szk/image/upload/v1767781842/WhatsApp_Image_2025-12-19_at_6.26.39_PM_sqhrst.jpg"
-                alt="Prashant Parmar profile"
-                className="profile-pic w-full h-full object-cover hover:scale-110 transition-transform duration-500 brightness-110 contrast-105"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-slate-900/20 to-transparent"></div>
+            <div className="absolute inset-[-18px] rounded-full border border-blue-400/20"></div>
+            <div className="absolute inset-[-34px] rounded-full border border-purple-400/10"></div>
+
+            <div className="relative rounded-full bg-white/30 p-3 shadow-[0_30px_80px_rgba(59,130,246,0.16)] backdrop-blur-2xl">
+              <div className="relative w-64 h-64 sm:w-72 sm:h-72 md:w-[26rem] md:h-[26rem] rounded-full overflow-hidden border border-white/60 shadow-2xl group">
+                <img
+                  src="https://res.cloudinary.com/dgib19szk/image/upload/v1767781842/WhatsApp_Image_2025-12-19_at_6.26.39_PM_sqhrst.jpg"
+                  alt="Prashant Parmar profile"
+                  className="profile-pic w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105 brightness-110 contrast-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-900/20 via-transparent to-white/10"></div>
+                <div className="absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-white/20 to-transparent"></div>
+              </div>
+
+              <div className="absolute -bottom-5 left-1/2 flex -translate-x-1/2 items-center gap-3 rounded-full border border-white/60 bg-white/80 px-5 py-2 text-slate-700 shadow-xl backdrop-blur-xl">
+                <span className="h-2.5 w-2.5 rounded-full bg-emerald-500 shadow-[0_0_14px_rgba(16,185,129,0.75)]"></span>
+                <span className="text-sm font-semibold tracking-wide">Available for Projects</span>
+              </div>
             </div>
-            <div className="absolute -bottom-16 left-1/2 transform -translate-x-1/2 w-96 h-40 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full blur-3xl opacity-30 animate-blob"></div>
+
+            <div className="absolute -bottom-16 left-1/2 transform -translate-x-1/2 h-40 w-96 rounded-full bg-gradient-to-r from-blue-600 to-purple-600 blur-3xl opacity-25 animate-blob"></div>
           </div>
         </div>
       </div>
