@@ -1,15 +1,17 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, lazy, Suspense } from 'react';
 import './App.css';
 import LoadingScreen from './components/LoadingScreen';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
-import About from './components/About';
-import Achievements from './components/Achievements';
-import Projects from './components/Projects';
-import Certificates from './components/Certificates';
-import Education from './components/Education';
-import Contact from './components/Contact';
-import Footer from './components/Footer';
+
+// Lazy load sections below the fold
+const About = lazy(() => import('./components/About'));
+const Achievements = lazy(() => import('./components/Achievements'));
+const Projects = lazy(() => import('./components/Projects'));
+const Certificates = lazy(() => import('./components/Certificates'));
+const Education = lazy(() => import('./components/Education'));
+const Contact = lazy(() => import('./components/Contact'));
+const Footer = lazy(() => import('./components/Footer'));
 
 export default function Portfolio() {
   const [isLoading, setIsLoading] = useState(true);
@@ -70,13 +72,15 @@ export default function Portfolio() {
       <div className={`min-h-screen ${isDark ? 'bg-gradient-to-b from-slate-950 via-slate-900 to-black' : 'bg-gradient-to-b from-slate-50 via-blue-50 to-white'} text-white overflow-x-clip`}>
         <Navbar isDark={isDark} setIsDark={setIsDark} />
         <Hero />
-        <About />
-        <Achievements isLoading={isLoading} />
-        <Projects />
-        <Certificates />
-        <Education />
-        <Contact />
-        <Footer />
+        <Suspense fallback={<div className="h-20" />}>
+          <About />
+          <Achievements isLoading={isLoading} />
+          <Projects />
+          <Certificates />
+          <Education />
+          <Contact />
+          <Footer />
+        </Suspense>
       </div>
     </>
   );

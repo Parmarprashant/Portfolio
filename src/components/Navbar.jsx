@@ -72,6 +72,7 @@ const Navbar = ({ isDark, setIsDark }) => {
 
         <button
           onClick={() => setMenuOpen(!menuOpen)}
+          aria-label={menuOpen ? "Close menu" : "Open menu"}
           className="md:hidden p-2 hover:bg-slate-800/50 rounded-lg transition-all"
         >
           {menuOpen ? <X size={24} className="text-blue-400" /> : <Menu size={24} className="text-blue-400" />}

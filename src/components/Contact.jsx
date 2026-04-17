@@ -221,6 +221,7 @@ const Contact = () => {
                 key={idx}
                 href={social.link}
                 title={social.label}
+                aria-label={social.label}
                 className={`group relative w-16 h-16 rounded-xl glass-effect border border-blue-500/30 hover:border-blue-500/70 flex items-center justify-center text-slate-300 hover:text-white transition-all duration-300 transform hover:scale-125 hover:-translate-y-3 scroll-animate-scale`}
                 style={{ transitionDelay: `${idx * 100}ms` }}
               >

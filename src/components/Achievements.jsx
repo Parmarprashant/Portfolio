@@ -157,6 +157,8 @@ function AchievementCard({ achievement, onOpen }) {
               src={activeMedia?.src ?? achievement.heroImage}
               alt={achievement.title}
               className="h-[300px] w-full object-cover transition-transform duration-700 group-hover:scale-[1.03] sm:h-[460px]"
+              loading="lazy"
+              decoding="async"
             />
           )}
           <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
@@ -181,6 +183,7 @@ function AchievementCard({ achievement, onOpen }) {
                 e.stopPropagation();
                 setActiveIndex(index);
               }}
+              aria-label={`View ${achievement.title} gallery item ${index + 1}`}
               className="overflow-hidden rounded-xl border"
               style={{
                 borderColor: index === activeIndex ? accent.badgeText : 'rgba(255,255,255,0.08)',
@@ -188,11 +191,22 @@ function AchievementCard({ achievement, onOpen }) {
               }}
             >
               <div className="relative">
-                <img
-                  src={item.thumb}
-                  alt={`${achievement.title} gallery ${index + 1}`}
-                  className="h-12 w-16 object-cover sm:h-14 sm:w-20"
-                />
+                {item.type === 'video' ? (
+                  <div className="relative flex h-12 w-16 items-center justify-center bg-slate-900 sm:h-14 sm:w-20">
+                    <img
+                      src={item.thumb}
+                      alt={`${achievement.title} gallery video`}
+                      className="absolute inset-0 h-full w-full object-cover opacity-60"
+                    />
+                    <PlayCircle size={18} className="relative z-10 text-white/90" />
+                  </div>
+                ) : (
+                  <img
+                    src={item.thumb}
+                    alt={`${achievement.title} gallery ${index + 1}`}
+                    className="h-12 w-16 object-cover sm:h-14 sm:w-20"
+                  />
+                )}
               </div>
             </button>
           ))}
@@ -271,6 +285,7 @@ function AchievementModalItem({ achievement }) {
                   e.stopPropagation();
                   setActiveIndex(index);
                 }}
+                aria-label={`View ${achievement.title} memory item ${index + 1}`}
                 className="shrink-0 overflow-hidden rounded-md border"
                 style={{ 
                   borderColor: index === activeIndex ? accent.badgeText : 'rgba(255,255,255,0.08)',
@@ -279,11 +294,22 @@ function AchievementModalItem({ achievement }) {
                 }}
               >
                 <div className="relative">
-                  <img
-                    src={item.thumb}
-                    alt={`${achievement.title} memory ${index + 1}`}
-                    className="h-7 w-10 object-cover sm:h-8 sm:w-12"
-                  />
+                  {item.type === 'video' ? (
+                    <div className="relative flex h-7 w-10 items-center justify-center bg-slate-900 sm:h-8 sm:w-12">
+                      <img
+                        src={item.thumb}
+                        alt={`${achievement.title} memory video`}
+                        className="absolute inset-0 h-full w-full object-cover opacity-60"
+                      />
+                      <PlayCircle size={12} className="relative z-10 text-white/90" />
+                    </div>
+                  ) : (
+                    <img
+                      src={item.thumb}
+                      alt={`${achievement.title} memory ${index + 1}`}
+                      className="h-7 w-10 object-cover sm:h-8 sm:w-12"
+                    />
+                  )}
                 </div>
               </button>
             ))}
@@ -409,6 +435,7 @@ function AchievementModal({ activeId, onClose }) {
     >
       <button
         onClick={onClose}
+        aria-label="Close achievement details"
         className="absolute right-4 top-4 z-[9001] flex h-8 w-8 items-center justify-center rounded-full border border-slate-700/50 text-slate-300"
         style={{ background: 'rgba(8,12,24,0.75)', backdropFilter: 'blur(10px)', transform: 'none' }}
       >
@@ -444,9 +471,10 @@ function AchievementModal({ activeId, onClose }) {
       </div>
 
       <div className="absolute bottom-8 left-1/2 flex -translate-x-1/2 gap-1">
-        {loopAchievements.map((achievement) => (
+        {loopAchievements.map((achievement, index) => (
           <button
             key={`dot-${achievement.id}`}
+            aria-label={`Go to achievement ${index + 1}`}
             onClick={(e) => {
               e.stopPropagation();
               const nextIndex = loopAchievements.findIndex((item) => item.id === achievement.id);

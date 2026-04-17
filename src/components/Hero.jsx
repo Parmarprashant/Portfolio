@@ -44,9 +44,12 @@ const Hero = () => {
             <div className="relative rounded-full bg-white/30 p-3 shadow-[0_30px_80px_rgba(59,130,246,0.16)] backdrop-blur-2xl">
               <div className="relative w-64 h-64 sm:w-72 sm:h-72 md:w-[26rem] md:h-[26rem] rounded-full overflow-hidden border border-white/60 shadow-2xl group">
                 <img
-                  src="https://res.cloudinary.com/dgib19szk/image/upload/v1767781842/WhatsApp_Image_2025-12-19_at_6.26.39_PM_sqhrst.jpg"
+                  src="https://res.cloudinary.com/dgib19szk/image/upload/f_auto,q_auto,w_1000/v1767781842/WhatsApp_Image_2025-12-19_at_6.26.39_PM_sqhrst.jpg"
                   alt="Prashant Parmar profile"
                   className="profile-pic w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105 brightness-110 contrast-105"
+                  fetchpriority="high"
+                  loading="eager"
+                  decoding="async"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-900/20 via-transparent to-white/10"></div>
                 <div className="absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-white/20 to-transparent"></div>
