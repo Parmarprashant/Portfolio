@@ -51,11 +51,6 @@ const Hero = () => {
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-900/20 via-transparent to-white/10"></div>
                 <div className="absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-white/20 to-transparent"></div>
               </div>
-
-              <div className="absolute -bottom-5 left-1/2 flex -translate-x-1/2 items-center gap-3 rounded-full border border-white/60 bg-white/80 px-5 py-2 text-slate-700 shadow-xl backdrop-blur-xl">
-                <span className="h-2.5 w-2.5 rounded-full bg-emerald-500 shadow-[0_0_14px_rgba(16,185,129,0.75)]"></span>
-                <span className="text-sm font-semibold tracking-wide">Available for Projects</span>
-              </div>
             </div>
 
             <div className="absolute -bottom-16 left-1/2 transform -translate-x-1/2 h-40 w-96 rounded-full bg-gradient-to-r from-blue-600 to-purple-600 blur-3xl opacity-25 animate-blob"></div>

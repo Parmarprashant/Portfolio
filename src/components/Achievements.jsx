@@ -142,16 +142,15 @@ function AchievementCard({ achievement, onOpen }) {
           {activeMedia?.type === 'video' ? (
             <video
               src={activeMedia.src}
-              className="h-[300px] w-full bg-black object-cover sm:h-[460px]"
-              controls
+              className="h-[300px] w-full bg-black object-cover sm:h-[440px]"
               autoPlay
               muted
               playsInline
+              loop
               preload="metadata"
               onClick={stopCardOpen}
               onMouseDown={stopCardOpen}
               onPointerDown={stopCardOpen}
-              onEnded={advanceMedia}
             />
           ) : (
             <img
@@ -189,21 +188,11 @@ function AchievementCard({ achievement, onOpen }) {
               }}
             >
               <div className="relative">
-                {item.type === 'video' ? (
-                  <video
-                    src={item.src}
-                    className="h-12 w-16 bg-black object-cover sm:h-14 sm:w-20"
-                    muted
-                    playsInline
-                    preload="metadata"
-                  />
-                ) : (
-                  <img
-                    src={item.thumb}
-                    alt={`${achievement.title} gallery ${index + 1}`}
-                    className="h-12 w-16 object-cover sm:h-14 sm:w-20"
-                  />
-                )}
+                <img
+                  src={item.thumb}
+                  alt={`${achievement.title} gallery ${index + 1}`}
+                  className="h-12 w-16 object-cover sm:h-14 sm:w-20"
+                />
               </div>
             </button>
           ))}
@@ -256,14 +245,13 @@ function AchievementModalItem({ achievement }) {
             {activeMedia?.type === 'video' ? (
               <video
                 src={activeMedia.src}
-                className="h-[220px] w-full bg-black object-cover sm:h-[300px]"
-                controls
+                className="h-[180px] w-full bg-black object-cover sm:h-[240px]"
                 autoPlay
                 muted
                 playsInline
+                loop
                 preload="metadata"
                 onClick={(e) => e.stopPropagation()}
-                onEnded={advanceMedia}
               />
             ) : (
               <img
@@ -291,21 +279,11 @@ function AchievementModalItem({ achievement }) {
                 }}
               >
                 <div className="relative">
-                  {item.type === 'video' ? (
-                    <video
-                      src={item.src}
-                      className="h-7 w-10 bg-black object-cover sm:h-8 sm:w-12"
-                      muted
-                      playsInline
-                      preload="metadata"
-                    />
-                  ) : (
-                    <img
-                      src={item.thumb}
-                      alt={`${achievement.title} memory ${index + 1}`}
-                      className="h-7 w-10 object-cover sm:h-8 sm:w-12"
-                    />
-                  )}
+                  <img
+                    src={item.thumb}
+                    alt={`${achievement.title} memory ${index + 1}`}
+                    className="h-7 w-10 object-cover sm:h-8 sm:w-12"
+                  />
                 </div>
               </button>
             ))}
@@ -405,13 +383,20 @@ function AchievementModal({ activeId, onClose }) {
   }, [activeId]);
 
   useEffect(() => {
+    const timer = setTimeout(() => {
+      onClose();
+    }, 5000);
+    return () => clearTimeout(timer);
+  }, [onClose]);
+
+  useEffect(() => {
     if (loopAchievements.length < 2) {
       return undefined;
     }
 
     const interval = setInterval(() => {
       setActiveIndex((current) => (current === 0 ? 1 : 0));
-    }, 3000);
+    }, 1500);
 
     return () => clearInterval(interval);
   }, [loopAchievements]);
@@ -432,7 +417,7 @@ function AchievementModal({ activeId, onClose }) {
 
       <div className="w-full max-w-[760px] overflow-hidden py-2">
         <div
-          className="flex transition-transform duration-700 ease-in-out"
+          className="flex transition-transform duration-300 ease-in-out"
           style={{ transform: `translateX(-${activeIndex * 100}%)` }}
         >
           {loopAchievements.map((achievement) => (
