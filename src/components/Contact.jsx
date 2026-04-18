@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import emailjs from '@emailjs/browser';
-import { Mail, Github, Linkedin, Twitter, ArrowRight } from "lucide-react";
+import { Mail, Github, Linkedin, Twitter, ArrowRight, Youtube, Code2 } from "lucide-react";
 
 // Initialize EmailJS outside component or inside useEffect.
 // Moving it here so it mounts once similar to what was in App.jsx
@@ -215,7 +215,9 @@ const Contact = () => {
               { Icon: Mail, link: 'mailto:prashantparmar9919@gmail.com', label: 'Email', color: 'from-red-600 to-orange-600' },
               { Icon: Github, link: 'https://github.com/Parmarprashant', label: 'GitHub', color: 'from-slate-700 to-slate-800' },
               { Icon: Linkedin, link: 'https://www.linkedin.com/in/prashant-parmar-0700373a1/', label: 'LinkedIn', color: 'from-blue-700 to-cyan-600' },
-              { Icon: Twitter, link: 'https://x.com/prashantparmxr', label: 'Twitter', color: 'from-cyan-500 to-blue-500' }
+              { Icon: Twitter, link: 'https://x.com/prashantparmxr', label: 'Twitter', color: 'from-cyan-500 to-blue-500' },
+              { Icon: Code2, link: 'https://leetcode.com/u/parmarprashant/', label: 'LeetCode', color: 'from-yellow-600 to-orange-500' },
+              { Icon: Youtube, link: 'https://www.youtube.com/@prashantparmar9919', label: 'YouTube', color: 'from-red-600 to-red-700' }
             ].map((social, idx) => (
               <a
                 key={idx}
