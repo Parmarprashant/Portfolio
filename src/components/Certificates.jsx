@@ -114,6 +114,8 @@ const Certificates = () => {
                       src={certificate.image}
                       alt={certificate.title}
                       className="h-[320px] w-full object-cover md:h-[420px]"
+                      loading="lazy"
+                      decoding="async"
                     />
                   </div>
                 </article>

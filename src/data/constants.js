@@ -1,13 +1,13 @@
 export const certificates = [
-  { id: 1, title: 'CS105: Introduction to Python', issuer: 'Saylor.org', date: 'December 19, 2025', image: 'https://res.cloudinary.com/dgib19szk/image/upload/v1767782202/5645318445PP-1_n1xomm.png' },
-  { id: 2, title: 'Building with Artificial Intelligence', issuer: 'Saylor.org', date: 'December 19, 2025', image: 'https://res.cloudinary.com/dgib19szk/image/upload/v1767782202/1755841329PP-1_j6rc80.png' },
-  { id: 3, title: 'Ai Tools workshop', issuer: 'Be10X', date: 'October 26th, 2025', image: 'https://res.cloudinary.com/dgib19szk/image/upload/v1767782202/Certificate-1_z9oatd.png' },
+  { id: 1, title: 'CS105: Introduction to Python', issuer: 'Saylor.org', date: 'December 19, 2025', image: 'https://res.cloudinary.com/dgib19szk/image/upload/f_auto,q_auto,w_600/v1767782202/5645318445PP-1_n1xomm.png' },
+  { id: 2, title: 'Building with Artificial Intelligence', issuer: 'Saylor.org', date: 'December 19, 2025', image: 'https://res.cloudinary.com/dgib19szk/image/upload/f_auto,q_auto,w_600/v1767782202/1755841329PP-1_j6rc80.png' },
+  { id: 3, title: 'Ai Tools workshop', issuer: 'Be10X', date: 'October 26th, 2025', image: 'https://res.cloudinary.com/dgib19szk/image/upload/f_auto,q_auto,w_600/v1767782202/Certificate-1_z9oatd.png' },
   { 
     id: 4, 
     title: 'Dev Heat Hackathon Participation', 
     issuer: 'IIIT Surat', 
     date: 'Spring Fiesta 2025', 
-    image: 'https://res.cloudinary.com/dgib19szk/image/upload/v1776451222/d7cfd351-88b6-4573-bff7-f312e86a0ae6_page-0001_crdcnv.jpg',
+    image: 'https://res.cloudinary.com/dgib19szk/image/upload/f_auto,q_auto,w_600/v1776451222/d7cfd351-88b6-4573-bff7-f312e86a0ae6_page-0001_crdcnv.jpg',
     description: 'Received a Certificate of Participation for contributing to the Dev Heat Hackathon at Spring Fiesta, organized by IIIT Surat. This experience enhanced my problem-solving, teamwork, and real-world development skills in a competitive environment.'
   },
 ];
@@ -28,9 +28,9 @@ export const achievements = [
     detail:
       'Built KisanDost, an AI-powered precision agriculture platform featuring satellite crop monitoring, profit prediction, and multilingual support. The full product was designed and shipped in under 36 hours.',
     heroImage:
-      'https://res.cloudinary.com/dgib19szk/image/upload/f_auto,q_auto,w_1200/v1774690494/WhatsApp_Image_2026-03-19_at_9.42.24_PM_fkctpx.jpg',
+      'https://res.cloudinary.com/dgib19szk/image/upload/f_auto,q_auto,w_1000/v1774690494/WhatsApp_Image_2026-03-19_at_9.42.24_PM_fkctpx.jpg',
     sideImage:
-      'https://res.cloudinary.com/dgib19szk/image/upload/f_auto,q_auto,w_800/v1774690494/WhatsApp_Image_2026-03-19_at_9.44.37_PM_qy2ggp.jpg',
+      'https://res.cloudinary.com/dgib19szk/image/upload/f_auto,q_auto,w_600/v1774690494/WhatsApp_Image_2026-03-19_at_9.44.37_PM_qy2ggp.jpg',
     galleryImages: [
       'https://res.cloudinary.com/dgib19szk/image/upload/f_auto,q_auto,w_800/v1774690494/WhatsApp_Image_2026-03-19_at_9.42.24_PM_fkctpx.jpg',
       'https://res.cloudinary.com/dgib19szk/image/upload/f_auto,q_auto,w_800/v1774690494/WhatsApp_Image_2026-03-19_at_9.44.37_PM_qy2ggp.jpg'
@@ -83,9 +83,11 @@ export const projects = [
     desc: 'Empowering Indian farmers with precision technology, satellite monitoring, and expert crop care. A comprehensive agricultural platform built with modern technologies.',
     tags: ['React JS', 'Next.js', 'MongoDB', 'Python', 'Node.js', 'Express'],
     image: 'https://res.cloudinary.com/dgib19szk/image/upload/f_auto,q_auto,w_800/v1774428997/Screenshot_2026-03-25_141520_pa3qyq.png',
-    category: 'Agriculture Tech',
+    category: 'Full Stack',
     github: 'https://github.com/patelmanan112/ps-03-ventureHack.git',
     live: 'https://venturehack.netlify.app',
+    youtube: 'https://www.youtube.com/watch?v=demo-video', // Placeholder for mandatory video
+    postman: 'https://documenter.getpostman.com/view/your-docs', // Mandatory for Full Stack
     pinned: true
   },
   {
@@ -93,7 +95,7 @@ export const projects = [
     desc: 'Built a Coursera-inspired learning platform clone using HTML, CSS, and JavaScript with a responsive UI.',
     tags: ['HTML', 'CSS', 'JavaScript'],
     image: 'https://res.cloudinary.com/dgib19szk/image/upload/f_auto,q_auto,w_800/v1767780750/Screenshot_2026-01-07_102815_rr1koh.png',
-    category: 'Learning Platform',
+    category: 'Clones',
     github: 'https://github.com/Parmarprashant/coursera-clone',
     live: 'https://courseraa-prashant.netlify.app',
     youtube: 'https://youtu.be/bOv65Dt3avk?si=x2qNM685yzrV1PNp'
@@ -103,7 +105,7 @@ export const projects = [
     desc: 'Built a Delhivery platform clone using HTML, CSS, and JavaScript with a responsive UI.',
     tags: ['HTML', 'CSS', 'JavaScript'],
     image: 'https://res.cloudinary.com/dgib19szk/image/upload/f_auto,q_auto,w_800/v1767780750/Screenshot_2026-01-07_103140_fx5l0q.png',
-    category: 'Logistics',
+    category: 'Clones',
     github: 'https://github.com/Parmarprashant/delhivery-clone',
     live: 'https://del-prashant.netlify.app',
     youtube: 'https://youtu.be/znt3gThQh4g?si=l8NLNiQVXbgACb0E'
@@ -113,7 +115,7 @@ export const projects = [
     desc: 'Built a Skipii platform clone using HTML, CSS, and JavaScript with a responsive UI.',
     tags: ['HTML', 'CSS', 'JavaScript'],
     image: 'https://res.cloudinary.com/dgib19szk/image/upload/f_auto,q_auto,w_800/v1767780750/Screenshot_2026-01-07_103834_z0bjuj.png',
-    category: 'Food Delivery',
+    category: 'Clones',
     github: 'https://github.com/Parmarprashant/skipii-clone',
     live: 'https://skippi-prashant.netlify.app',
     youtube: 'https://youtu.be/AAypqWni_MM?si=EZaaIZhWFAGqC5FG'
@@ -123,7 +125,7 @@ export const projects = [
     desc: 'Built a BluetoKaiCoffee platform clone using HTML, CSS, and JavaScript with a responsive UI.',
     tags: ['HTML', 'CSS', 'JavaScript'],
     image: 'https://res.cloudinary.com/dgib19szk/image/upload/f_auto,q_auto,w_800/v1767780750/Screenshot_2026-01-07_104334_zlcpvi.png',
-    category: 'E-Commerce',
+    category: 'Clones',
     github: 'https://github.com/Parmarprashant/bluetokai-clone',
     live: 'https://blue-clone-prashant.netlify.app',
     youtube: 'https://youtu.be/O6Mdh3mOgCo?si=3erYXPQ9AzeIjcr3'
@@ -133,7 +135,7 @@ export const projects = [
     desc: 'Built a Postman API platform clone using HTML, CSS, and JavaScript with responsive design',
     tags: ['HTML', 'CSS', 'JavaScript'],
     image: 'https://res.cloudinary.com/dgib19szk/image/upload/f_auto,q_auto,w_800/v1767780750/Screenshot_2026-01-07_104426_inuup6.png',
-    category: 'Developer Tools',
+    category: 'Frontend',
     github: 'https://github.com/Parmarprashant/postman-clone',
     live: 'https://post-clone-prashan.netlify.app',
     youtube: 'https://youtu.be/1ZDdGl2ar2U?si=V5s70zRHTWk0oXmN'
@@ -143,7 +145,7 @@ export const projects = [
     desc: 'Built a Blix Scooter platform clone using HTML, CSS, and JavaScript with modern UI',
     tags: ['HTML', 'CSS', 'JavaScript'],
     image: 'https://res.cloudinary.com/dgib19szk/image/upload/f_auto,q_auto,w_800/v1767780751/Screenshot_2026-01-07_104517_bsyo7d.png',
-    category: 'E-Commerce',
+    category: 'Clones',
     github: 'https://github.com/Parmarprashant/blix-scooter-clone',
     live: 'https://bliss-clone.netlify.app',
     youtube: 'https://youtu.be/lVykFH56af8?si=y45U3vmHcRnK3Dgd'

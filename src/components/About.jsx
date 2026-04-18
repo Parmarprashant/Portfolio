@@ -87,7 +87,7 @@ const About = () => {
               style={{ transitionDelay: `${idx * 100}ms` }}
             >
               <div className="w-14 h-14 bg-gradient-to-br from-blue-500 to-purple-600 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 group-hover:rotate-12 transition-all shadow-lg group-hover:animate-rotate-axis">
-                <img src={item.icon} alt={item.alt} className="w-7 h-7" />
+                <img src={item.icon} alt={item.alt} className="w-7 h-7" loading="lazy" decoding="async" />
               </div>
               <h3 className="text-2xl font-bold text-white mb-3 group-hover:text-blue-400 transition-colors">{item.title}</h3>
               <p className="text-slate-300 leading-relaxed">{item.desc}</p>

@@ -7,25 +7,25 @@ const figmaDesigns = [
     id: 1,
     title: "EduFusion – Learning Management Dashboard",
     description: "Designed a modern learning management dashboard focused on clarity and usability for both instructors and students. The interface includes assignment tracking, student performance insights, badge achievements, and integrated coding platforms. Emphasis was placed on structured layouts, visual hierarchy, and quick navigation to help users monitor progress efficiently. The design balances data density with readability, ensuring a smooth academic workflow experience.",
-    image: "https://res.cloudinary.com/dgib19szk/image/upload/v1776449606/Screenshot_2026-04-17_164448_r4fau2.png",
+    image: "https://res.cloudinary.com/dgib19szk/image/upload/f_auto,q_auto,w_800/v1776449606/Screenshot_2026-04-17_164448_r4fau2.png",
   },
   {
     id: 2,
     title: "Urban Veins – Hotel Booking Experience",
     description: "Created a seamless hotel booking interface that guides users from search to room selection with minimal friction. The design highlights key information such as pricing, ratings, and amenities while maintaining a clean and visually engaging layout. A strong focus was placed on user flow—search → results → room details → checkout—to ensure intuitive navigation and decision-making.",
-    image: "https://res.cloudinary.com/dgib19szk/image/upload/v1776449612/Screenshot_2026-04-17_164658_wgyr3b.png",
+    image: "https://res.cloudinary.com/dgib19szk/image/upload/f_auto,q_auto,w_800/v1776449612/Screenshot_2026-04-17_164658_wgyr3b.png",
   },
   {
     id: 3,
     title: "AuraStream – OTT Streaming Platform UI",
     description: "Designed a responsive OTT streaming platform interface optimized for both desktop and mobile devices. The layout showcases featured content, categorized browsing, and personalized recommendations, along with detailed movie pages and promotional sections. Special attention was given to content discoverability, visual engagement, and cross-device consistency. The design aims to deliver an immersive and user-friendly entertainment experience.",
-    image: "https://res.cloudinary.com/dgib19szk/image/upload/v1776449608/Screenshot_2026-04-17_164732_lxl9k4.png",
+    image: "https://res.cloudinary.com/dgib19szk/image/upload/f_auto,q_auto,w_800/v1776449608/Screenshot_2026-04-17_164732_lxl9k4.png",
   },
   {
     id: 4,
     title: "SplitFlow – Expense Splitting Mobile App",
     description: "Designed a user-friendly mobile application to simplify group expense management and bill splitting. The app allows users to create or join groups, track shared expenses, monitor balances, and settle payments seamlessly. Key features include expense categorization, real-time balance updates, activity tracking, and payment intent visualization. The design focuses on clarity, minimal cognitive load, and smooth navigation across multiple user flows—from onboarding and authentication to expense entry and settlement.",
-    image: "https://res.cloudinary.com/dgib19szk/image/upload/v1776450448/Screenshot_2026-04-17_235700_dxnxj0.png",
+    image: "https://res.cloudinary.com/dgib19szk/image/upload/f_auto,q_auto,w_800/v1776450448/Screenshot_2026-04-17_235700_dxnxj0.png",
   }
 ];
 
@@ -72,6 +72,8 @@ const FigmaDesign = () => {
                   src={design.image}
                   alt={design.title}
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                  loading="lazy"
+                  decoding="async"
                 />
                 <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
                   <div className="bg-white/20 backdrop-blur-md p-4 rounded-full border border-white/30 transform scale-0 group-hover:scale-100 transition-transform duration-500">
