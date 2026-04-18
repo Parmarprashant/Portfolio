@@ -114,18 +114,6 @@ const Projects = () => {
                     </span>
                   )}
 
-                  {project.postman && (
-                    <a
-                      href={project.postman}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="px-4 py-2 rounded-lg font-bold bg-orange-600/20 text-orange-400 hover:text-white hover:bg-orange-600 transition-all duration-300 border border-orange-500/30 hover:border-orange-500 hover:scale-105 hover:-translate-y-1 flex items-center justify-center"
-                      title="View API Documentation"
-                    >
-                      <img src="https://cdn-icons-png.flaticon.com/512/5968/5968852.png" alt="Postman" className="w-5 h-5" />
-                    </a>
-                  )}
-
                   {project.youtube && (
                     <a
                       href={project.youtube}

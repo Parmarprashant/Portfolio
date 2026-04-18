@@ -6,4 +6,18 @@ export default defineConfig({
     react(),
     tailwindcss(),
   ],
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          'react-vendor': ['react', 'react-dom'],
+          'framer-motion': ['framer-motion'],
+          'lucide': ['lucide-react'],
+        },
+      },
+    },
+    minify: 'esbuild',
+    cssCodeSplit: true,
+    chunkSizeWarningLimit: 1000,
+  },
 })

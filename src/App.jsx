@@ -20,49 +20,60 @@ export default function Portfolio() {
 
   useEffect(() => {
     setIsLoading(true);
-    const timer = setTimeout(() => setIsLoading(false), 2000);
+    // Reduced from 2000ms to 800ms for better performance while maintaining branding
+    const timer = setTimeout(() => setIsLoading(false), 800);
     return () => clearTimeout(timer);
   }, []);
 
   useEffect(() => {
-    let observer = null;
-    const timer = setTimeout(() => {
-      const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -100px 0px'
-      };
+    if (isLoading) return;
 
-      observer = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            const classList = entry.target.className;
-            
-            if (typeof classList === 'string') {
-              if (classList.includes('scroll-animate-left')) {
-                entry.target.classList.add('scroll-visible-left');
-              } else if (classList.includes('scroll-animate-right')) {
-                entry.target.classList.add('scroll-visible-right');
-              } else if (classList.includes('scroll-animate-up')) {
-                entry.target.classList.add('scroll-visible-up');
-              } else if (classList.includes('scroll-animate-scale')) {
-                entry.target.classList.add('scroll-visible-scale');
-              }
-            }
-            
-            observer.unobserve(entry.target);
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -100px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const target = entry.target;
+          
+          if (target.classList.contains('scroll-animate-left')) {
+            target.classList.add('scroll-visible-left');
+          } else if (target.classList.contains('scroll-animate-right')) {
+            target.classList.add('scroll-visible-right');
+          } else if (target.classList.contains('scroll-animate-up')) {
+            target.classList.add('scroll-visible-up');
+          } else if (target.classList.contains('scroll-animate-scale')) {
+            target.classList.add('scroll-visible-scale');
           }
-        });
-      }, observerOptions);
-
-      const animatedElements = document.querySelectorAll('[class*="scroll-animate"]');
-      animatedElements.forEach((el) => {
-        observer.observe(el);
+          
+          observer.unobserve(target);
+        }
       });
-    }, 100);
+    }, observerOptions);
+
+    // Initial check for elements
+    const observeElements = () => {
+      const elements = document.querySelectorAll('[class*="scroll-animate"]');
+      elements.forEach((el) => observer.observe(el));
+    };
+
+    observeElements();
+
+    // Use MutationObserver to watch for lazy-loaded content
+    const mutationObserver = new MutationObserver(() => {
+      observeElements();
+    });
+
+    mutationObserver.observe(document.body, {
+      childList: true,
+      subtree: true
+    });
 
     return () => {
-      clearTimeout(timer);
-      if (observer) observer.disconnect();
+      observer.disconnect();
+      mutationObserver.disconnect();
     };
   }, [isLoading]);
 
@@ -70,7 +81,7 @@ export default function Portfolio() {
     <>
       {isLoading && <LoadingScreen />}
 
-      <div className={`min-h-screen ${isDark ? 'bg-gradient-to-b from-slate-950 via-slate-900 to-black' : 'bg-gradient-to-b from-slate-50 via-blue-50 to-white'} text-white overflow-x-clip`}>
+      <div className={`min-h-screen ${isDark ? 'bg-gradient-to-b from-slate-950 via-slate-900 to-black text-white' : 'bg-gradient-to-b from-slate-50 via-blue-50 to-white text-slate-900'} overflow-x-clip transition-colors duration-500`}>
         <Navbar isDark={isDark} setIsDark={setIsDark} />
         <Hero />
         <Suspense fallback={<div className="h-20" />}>
@@ -78,7 +89,7 @@ export default function Portfolio() {
           <Projects />
           <FigmaDesign />
           <Certificates />
-          <Achievements isLoading={isLoading} />
+          <Achievements />
           <Education />
           <Contact />
           <Footer />

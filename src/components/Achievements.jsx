@@ -409,13 +409,6 @@ function AchievementModal({ activeId, onClose }) {
   }, [activeId]);
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      onClose();
-    }, 5000);
-    return () => clearTimeout(timer);
-  }, [onClose]);
-
-  useEffect(() => {
     if (loopAchievements.length < 2) {
       return undefined;
     }
@@ -494,7 +487,7 @@ function AchievementModal({ activeId, onClose }) {
 }
 
 
-const Achievements = ({ isLoading = false }) => {
+const Achievements = () => {
   const [activeAchievement, setActiveAchievement] = useState(null);
   const hasAutoOpened = useRef(false);
 
@@ -502,19 +495,6 @@ const Achievements = ({ isLoading = false }) => {
     () => achievements.find((item) => item.featured) ?? achievements[0] ?? null,
     []
   );
-
-  useEffect(() => {
-    if (isLoading || hasAutoOpened.current || !featuredAchievement) {
-      return undefined;
-    }
-
-    hasAutoOpened.current = true;
-    const timer = window.setTimeout(() => {
-      setActiveAchievement(featuredAchievement.id);
-    }, 500);
-
-    return () => window.clearTimeout(timer);
-  }, [featuredAchievement, isLoading]);
 
   useEffect(() => {
     if (!activeAchievement) {

@@ -27,7 +27,7 @@ const Hero = () => {
               <a href="#projects" className="px-8 py-4 rounded-full font-bold border-2 border-blue-500 text-blue-400 hover:bg-blue-500/10 transition-all duration-300 transform hover:scale-105 animate-skew-in animation-delay-500">
                 View My Work
               </a>
-              <a href="/Prashant-Parmar_Resume.pdf" target="_blank" rel="noopener noreferrer" className="px-8 py-4 rounded-full font-bold border-2 border-slate-600 text-slate-300 [[class*='light-mode']_&]:text-slate-600 [[class*='light-mode']_&]:border-slate-300 hover:border-blue-500 hover:text-blue-400 transition-all duration-300 transform hover:scale-105 flex items-center gap-2 animate-slide-up-bounce animation-delay-600">
+              <a href="/resume.html" target="_blank" rel="noopener noreferrer" className="px-8 py-4 rounded-full font-bold border-2 border-slate-600 text-slate-300 [[class*='light-mode']_&]:text-slate-600 [[class*='light-mode']_&]:border-slate-300 hover:border-blue-500 hover:text-blue-400 transition-all duration-300 transform hover:scale-105 flex items-center gap-2 animate-slide-up-bounce animation-delay-600">
                 <Download size={18} /> Resume
               </a>
             </div>
@@ -44,10 +44,15 @@ const Hero = () => {
               <div className="relative w-64 h-64 sm:w-72 sm:h-72 md:w-[26rem] md:h-[26rem] rounded-full overflow-hidden border border-white/60 shadow-2xl group">
                 <img
                   src="https://res.cloudinary.com/dgib19szk/image/upload/f_auto,q_auto,w_600/v1767781842/WhatsApp_Image_2025-12-19_at_6.26.39_PM_sqhrst.jpg"
+                  srcSet="https://res.cloudinary.com/dgib19szk/image/upload/f_auto,q_auto,w_400/v1767781842/WhatsApp_Image_2025-12-19_at_6.26.39_PM_sqhrst.jpg 400w,
+                          https://res.cloudinary.com/dgib19szk/image/upload/f_auto,q_auto,w_600/v1767781842/WhatsApp_Image_2025-12-19_at_6.26.39_PM_sqhrst.jpg 600w,
+                          https://res.cloudinary.com/dgib19szk/image/upload/f_auto,q_auto,w_800/v1767781842/WhatsApp_Image_2025-12-19_at_6.26.39_PM_sqhrst.jpg 800w"
+                  sizes="(max-width: 640px) 256px, (max-width: 768px) 288px, 416px"
                   alt="Prashant Parmar profile"
                   className="profile-pic w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105 brightness-110 contrast-105"
                   loading="eager"
                   decoding="async"
+                  fetchpriority="high"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-900/20 via-transparent to-white/10"></div>
                 <div className="absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-white/20 to-transparent"></div>

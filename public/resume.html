@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Prashant Parmar — Resume</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;600;700&family=Barlow+Condensed:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: #3a3a3a;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+    padding: 30px 20px;
+    font-family: 'Barlow', sans-serif;
+  }
+
+  .resume {
+    width: 780px;
+    background: #fff;
+    box-shadow: 0 8px 40px rgba(0,0,0,0.6);
+    padding: 34px 38px 30px;
+  }
+
+  /* ── HEADER ── */
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 10px;
+  }
+  .name {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 44px;
+    font-weight: 700;
+    letter-spacing: 6px;
+    color: #111;
+    line-height: 1;
+    text-transform: uppercase;
+  }
+  .title {
+    font-size: 9.5px;
+    font-weight: 600;
+    letter-spacing: 4px;
+    color: #555;
+    text-transform: uppercase;
+    margin-top: 5px;
+  }
+  .header-right {
+    text-align: right;
+    padding-top: 4px;
+  }
+  .contact-line {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 6px;
+    font-size: 9.5px;
+    color: #222;
+    margin-bottom: 5px;
+    font-weight: 400;
+  }
+
+  /* ── SOCIAL BAR ── */
+  .social-bar {
+    display: flex;
+    align-items: center;
+    gap: 22px;
+    padding: 8px 0;
+    border-top: 1.5px solid #bbb;
+    border-bottom: 1.5px solid #bbb;
+    margin-bottom: 16px;
+  }
+  .social-item {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 9.5px;
+    font-weight: 500;
+    color: #222;
+    text-decoration: none;
+    letter-spacing: 0.2px;
+  }
+  .s-icon {
+    width: 15px; height: 15px;
+    border: 1.5px solid #333;
+    border-radius: 3px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 7px; color: #222; font-weight: 700;
+    flex-shrink: 0;
+  }
+  .s-icon.round { border-radius: 50%; }
+
+  /* ── TWO COLUMNS ── */
+  .columns {
+    display: flex;
+  }
+  .col-left {
+    width: 240px;
+    min-width: 240px;
+    padding-right: 22px;
+    border-right: 1.5px solid #ccc;
+  }
+  .col-right {
+    flex: 1;
+    padding-left: 22px;
+  }
+
+  /* Section title */
+  .sec-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: #111;
+    margin-bottom: 9px;
+    padding-bottom: 4px;
+    border-bottom: 1px solid #ccc;
+  }
+
+  .section { margin-bottom: 16px; }
+
+  /* About */
+  .about-text {
+    font-size: 9px;
+    line-height: 1.65;
+    color: #333;
+  }
+
+  /* Education */
+  .edu-item { margin-bottom: 9px; }
+  .edu-years { font-size: 8.5px; color: #555; font-weight: 500; }
+  .edu-school {
+    font-size: 10px; font-weight: 700;
+    color: #111; text-transform: uppercase;
+    letter-spacing: 0.3px; line-height: 1.3;
+    margin: 1px 0 3px;
+  }
+  .edu-bullets { padding-left: 13px; }
+  .edu-bullets li { font-size: 8.8px; color: #444; line-height: 1.55; list-style: disc; }
+
+  /* Skills */
+  .skill-list { padding-left: 13px; }
+  .skill-list li { font-size: 9px; color: #333; line-height: 1.65; list-style: disc; }
+
+  /* Languages */
+  .lang-list { padding-left: 13px; }
+  .lang-list li { font-size: 9px; color: #333; line-height: 1.65; list-style: disc; }
+
+  /* Hackathon */
+  .hack-item { margin-bottom: 12px; }
+  .hack-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 1px;
+  }
+  .hack-event { font-size: 10.5px; font-weight: 700; color: #111; }
+  .hack-project { font-size: 9.5px; font-weight: 600; color: #333; margin-bottom: 3px; }
+  .hack-badge {
+    font-size: 8.5px;
+    font-weight: 700;
+    color: #111;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    letter-spacing: 0.5px;
+    white-space: nowrap;
+  }
+  .badge-circle {
+    width: 14px; height: 14px;
+    border-radius: 50%;
+    border: 1.5px solid #111;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 7px; color: #111;
+  }
+  .hack-desc { font-size: 8.8px; color: #444; line-height: 1.55; }
+  .hack-desc li { list-style: disc; margin-left: 13px; margin-bottom: 2px; }
+
+  .divider { border: none; border-top: 1px solid #ddd; margin: 10px 0; }
+
+  /* Frontend projects */
+  .proj-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3px 10px;
+  }
+  .proj-item {
+    font-size: 9px;
+    color: #333;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+  .proj-item::before { content: '•'; color: #555; }
+
+  /* Certificates */
+  .cert-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3px 10px;
+  }
+  .cert-item {
+    font-size: 9px;
+    color: #333;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+  .cert-item::before { content: '•'; color: #555; }
+
+  @media print {
+    body { background: #fff; padding: 0; }
+    .resume { box-shadow: none; margin: 0; }
+  }
+</style>
+</head>
+<body>
+<div class="resume">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div>
+      <div class="name">Prashant Parmar</div>
+      <div class="title">Full Stack &amp; AI Developer</div>
+    </div>
+    <div class="header-right">
+      <div class="contact-line">
+        <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#333" stroke-width="2.2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.22 1.18 2 2 0 012.18 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.16 6.16l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+        +91-7779007807
+      </div>
+      <div class="contact-line">
+        <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#333" stroke-width="2.2"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        Dahod, Gujarat, India
+      </div>
+      <div class="contact-line">
+        <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#333" stroke-width="2.2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        prashantparmar9919@gmail.com
+      </div>
+    </div>
+  </div>
+
+  <!-- SOCIAL BAR -->
+  <div class="social-bar">
+    <a class="social-item" href="https://www.linkedin.com/in/prashant-parmar-0700373a1/" target="_blank">
+      <div class="s-icon"><span style="font-family:serif;font-size:8px;font-weight:800;">in</span></div>
+      LinkedIn
+    </a>
+    <a class="social-item" href="https://github.com/Parmarprashant" target="_blank">
+      <div class="s-icon round">
+        <svg width="8" height="8" viewBox="0 0 16 16" fill="#222"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+      </div>
+      GitHub
+    </a>
+    <a class="social-item" href="https://prashantparmar.vercel.app/" target="_blank">
+      <div class="s-icon">◎</div>
+      Portfolio
+    </a>
+    <a class="social-item" href="https://leetcode.com/u/parmarprashant/" target="_blank">
+      <div class="s-icon" style="font-size:6.5px; font-weight:700;">LC</div>
+      LeetCode
+    </a>
+    <a class="social-item" href="https://www.youtube.com/@prashantparmar9919" target="_blank">
+      <div class="s-icon">
+        <svg width="9" height="7" viewBox="0 0 20 14" fill="#222"><path d="M19.6 2.2s-.2-1.6-1-2.3C17.7-.9 16.4-.9 15.8-.8 13.2-.6 9.8-.6 9.8-.6S6.4-.6 3.8-.8C3.2-.9 1.9-.9 1 .1.2 1.7.2 3.5.2 3.5S0 5.6 0 7.8V9.5C0 11.7.2 13.8.2 13.8s.2 1.6 1 2.3c1.1.6 2.4.5 3 .6C6.2 16.9 9.8 17 9.8 17s3.4 0 6-.2c.6-.1 1.9-.1 2.8-1.3.8-1.4.8-3.2.8-3.2s.2-2.1.2-4.3V6.4C19.8 4.2 19.6 2.2 19.6 2.2zM7.8 11.7V4.2l6.6 3.8-6.6 3.7z"/></svg>
+      </div>
+      YouTube
+    </a>
+    <a class="social-item" href="https://x.com/prashantparmxr" target="_blank">
+      <div class="s-icon" style="font-size:9px; font-weight:900;">𝕏</div>
+      Twitter
+    </a>
+  </div>
+
+  <!-- COLUMNS -->
+  <div class="columns">
+
+    <!-- LEFT COLUMN -->
+    <div class="col-left">
+
+      <div class="section">
+        <div class="sec-title">About Me</div>
+        <p class="about-text">
+          Full-stack developer with strong problem-solving abilities and a passion for building new technologies. SU Hackathon 2026 1st Place Winner. Skilled in developing efficient, scalable applications using Node.js, React, MongoDB, and Python for AI-driven solutions. Continuously improving through real-world projects and competitive hackathons.
+        </p>
+      </div>
+
+      <div class="section">
+        <div class="sec-title">Education</div>
+
+        <div class="edu-item">
+          <div class="edu-years">2025 – 2029</div>
+          <div class="edu-school">Swaminarayan University</div>
+          <ul class="edu-bullets">
+            <li>Bachelor of Engineering in CSE</li>
+            <li>Data Structures · OOP · DBMS · OS</li>
+          </ul>
+        </div>
+
+        <div class="edu-item">
+          <div class="edu-years">2023 – 2025</div>
+          <div class="edu-school">Little Flower's H.S. School</div>
+          <ul class="edu-bullets">
+            <li>Higher Secondary Education</li>
+            <li>Science Stream</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="sec-title">Skills</div>
+        <ul class="skill-list">
+          <li>HTML5, CSS3, JavaScript (ES6+)</li>
+          <li>React.js &amp; Hooks, Tailwind CSS</li>
+          <li>Node.js, Express.js</li>
+          <li>MongoDB, Mongoose ODM</li>
+          <li>Python, FastAPI</li>
+          <li>AI Model Integration, REST APIs</li>
+          <li>Prompt Engineering</li>
+          <li>Image Analysis APIs</li>
+          <li>JWT Authentication &amp; Role-Based</li>
+          <li>Git &amp; GitHub</li>
+          <li>Figma (7+ months experience)</li>
+          <li>Postman, VS Code</li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <div class="sec-title">Languages</div>
+        <ul class="lang-list">
+          <li>English</li>
+          <li>Gujarati (Native)</li>
+          <li>Hindi</li>
+        </ul>
+      </div>
+
+    </div>
+
+    <!-- RIGHT COLUMN -->
+    <div class="col-right">
+
+      <div class="section">
+        <div class="sec-title">Hackathon Projects</div>
+
+        <!-- SU Hackathon -->
+        <div class="hack-item">
+          <div class="hack-header">
+            <div>
+              <div class="hack-event">SU Hackathon</div>
+              <div class="hack-project">KisanDost — A Farmer's Friend (YieldAI)</div>
+            </div>
+            <div class="hack-badge">
+              WINNER
+              <div class="badge-circle">○</div>
+            </div>
+          </div>
+          <div class="hack-desc">
+            <ul>
+              <li>KisanDost is an AI-driven agriculture platform built to empower farmers with intelligent, data-driven insights. Features include crop yield prediction, plant disease detection, and smart market recommendations — delivered solo in 36 hours.</li>
+              <li>Secured 1st place among all competing teams, judged on innovation, technical execution, and real-world applicability at Sangam University's 36-Hour Competitive Hackathon, March 2026.</li>
+            </ul>
+          </div>
+        </div>
+
+        <hr class="divider">
+
+        <!-- Convergence Hackathon -->
+        <div class="hack-item">
+          <div class="hack-header">
+            <div>
+              <div class="hack-event">Convergence Hackathon</div>
+              <div class="hack-project">KisanDost</div>
+            </div>
+            <div class="hack-badge">
+              1<sup style="font-size:6px;">ST</sup>&nbsp;RUNNER-UP
+              <div class="badge-circle">○</div>
+            </div>
+          </div>
+          <div class="hack-desc">
+            <ul>
+              <li>Convergence is organised by Ganpat University, Mehsana, Gujarat. Developed a real-life solution for India's farmers — a crop diseases detector, profit prediction engine, and regional language support, competing against top university teams.</li>
+              <li>Secured 2nd place with the same KisanDost platform, recognised for innovative AI-based approach and production-grade implementation under hackathon conditions.</li>
+            </ul>
+          </div>
+        </div>
+
+        <hr class="divider">
+      </div>
+
+      <div class="section">
+        <div class="sec-title">UI/UX &amp; Frontend Projects</div>
+        <div class="proj-grid">
+          <div class="proj-item">Coursera Clone ↗</div>
+          <div class="proj-item">Postman Clone ↗</div>
+          <div class="proj-item">Habit Tracker ↗</div>
+          <div class="proj-item">Movie App ↗</div>
+          <div class="proj-item">Bliss-Scooter Clone ↗</div>
+          <div class="proj-item">Portfolio ↗</div>
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="sec-title">Certificates</div>
+        <div class="cert-grid">
+          <div class="cert-item">HTML, CSS &amp; JS</div>
+          <div class="cert-item">AI Tools &amp; ChatGPT (be10x)</div>
+          <div class="cert-item">CS205: Building with AI</div>
+          <div class="cert-item">Convergence Hackathon</div>
+          <div class="cert-item">SU Hackathon 2026</div>
+          <div class="cert-item">Prompt Engineering</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
