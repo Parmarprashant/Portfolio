@@ -7,7 +7,7 @@ const figmaDesigns = [
     id: 1,
     title: "EduFusion – Learning Management Dashboard",
     description: "Designed a modern learning management dashboard focused on clarity and usability for both instructors and students. The interface includes assignment tracking, student performance insights, badge achievements, and integrated coding platforms. Emphasis was placed on structured layouts, visual hierarchy, and quick navigation to help users monitor progress efficiently. The design balances data density with readability, ensuring a smooth academic workflow experience.",
-    image: "https://res.cloudinary.com/dgib19szk/image/upload/v1776449608/Screenshot_2026-04-17_164732_lxl9k4.png",
+    image: "https://res.cloudinary.com/dgib19szk/image/upload/v1776449606/Screenshot_2026-04-17_164448_r4fau2.png",
   },
   {
     id: 2,
@@ -19,7 +19,7 @@ const figmaDesigns = [
     id: 3,
     title: "AuraStream – OTT Streaming Platform UI",
     description: "Designed a responsive OTT streaming platform interface optimized for both desktop and mobile devices. The layout showcases featured content, categorized browsing, and personalized recommendations, along with detailed movie pages and promotional sections. Special attention was given to content discoverability, visual engagement, and cross-device consistency. The design aims to deliver an immersive and user-friendly entertainment experience.",
-    image: "https://res.cloudinary.com/dgib19szk/image/upload/v1776449606/Screenshot_2026-04-17_164448_r4fau2.png",
+    image: "https://res.cloudinary.com/dgib19szk/image/upload/v1776449608/Screenshot_2026-04-17_164732_lxl9k4.png",
   },
   {
     id: 4,
