@@ -1,5 +1,6 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react';
-import { motion } from 'framer-motion';
+import { createPortal } from 'react-dom';
+import { motion, AnimatePresence } from 'framer-motion';
 import { ExternalLink, PlayCircle, Trophy, X } from 'lucide-react';
 import { achievements } from '../data/constants';
 
@@ -101,7 +102,10 @@ function AchievementCard({ achievement, onOpen }) {
         transition={{ type: 'spring', stiffness: 280, damping: 24 }}
         className="achievement-card group relative h-full cursor-pointer overflow-hidden rounded-[31px] border border-white/5 px-7 py-8"
         style={{ background: 'linear-gradient(180deg, rgba(13,18,26,0.98), rgba(10,14,22,0.96))' }}
-        onClick={() => onOpen(achievement.id)}
+        onClick={() => {
+          console.log('Opening achievement:', achievement.id);
+          onOpen(achievement.id);
+        }}
       >
         <div className="absolute inset-0 opacity-40" style={{ background: 'radial-gradient(circle at top left, rgba(255,255,255,0.06), transparent 35%)' }} />
         <div className="absolute inset-0 opacity-[0.05]" style={{ backgroundImage: 'radial-gradient(circle, rgba(255,255,255,0.45) 1px, transparent 1px)', backgroundSize: '18px 18px' }} />
@@ -135,9 +139,6 @@ function AchievementCard({ achievement, onOpen }) {
 
         <div
           className="relative z-10 mt-8 overflow-hidden rounded-[26px] border border-white/10 bg-slate-950/50"
-          onClick={stopCardOpen}
-          onMouseDown={stopCardOpen}
-          onPointerDown={stopCardOpen}
         >
           {activeMedia?.type === 'video' ? (
             <video
@@ -148,9 +149,6 @@ function AchievementCard({ achievement, onOpen }) {
               playsInline
               loop
               preload="metadata"
-              onClick={stopCardOpen}
-              onMouseDown={stopCardOpen}
-              onPointerDown={stopCardOpen}
             />
           ) : (
             <img
@@ -172,8 +170,6 @@ function AchievementCard({ achievement, onOpen }) {
         <div
           className="relative z-10 mt-4 flex items-center justify-center gap-3"
           onClick={stopCardOpen}
-          onMouseDown={stopCardOpen}
-          onPointerDown={stopCardOpen}
         >
           {mediaItems.map((item, index) => (
             <button
@@ -238,152 +234,78 @@ function AchievementCard({ achievement, onOpen }) {
   );
 }
 
-function AchievementModalItem({ achievement }) {
+function AchievementModalItem({ achievement, onClose }) {
   const accent = accentStyles[achievement.accent] ?? accentStyles.gold;
-  const mediaItems = getMediaItems(achievement);
-  const [activeIndex, setActiveIndex] = useState(0);
-  const activeMedia = mediaItems[activeIndex] ?? mediaItems[0];
-  const advanceMedia = () => {
-    setActiveIndex((current) => (current === mediaItems.length - 1 ? 0 : current + 1));
+  const videoUrl = useMemo(() => getDriveDirectVideoUrl(achievement.videoUrl), [achievement.videoUrl]);
+
+  const handleOverviewClick = (e) => {
+    onClose();
+    // The href="#achievements" will handle the scroll
   };
 
   return (
     <div
-      className="relative w-full shrink-0 overflow-hidden rounded-[20px] border border-white/5 bg-[#0a101e] p-3 sm:p-4"
-      style={{ backdropFilter: 'blur(24px)' }}
+      className="relative w-full overflow-hidden rounded-[24px] border border-white/10 bg-[#0a101e] p-5 sm:p-6"
+      style={{ backdropFilter: 'blur(30px)' }}
       onClick={(e) => e.stopPropagation()}
     >
-      <div className="grid gap-3.5 md:grid-cols-[1.1fr_0.9fr]">
-        <div>
-          <div className="relative overflow-hidden rounded-[14px] border border-white/10">
-            {activeMedia?.type === 'video' ? (
-              <video
-                src={activeMedia.src}
-                className="h-[180px] w-full bg-black object-cover sm:h-[240px]"
-                autoPlay
-                muted
-                playsInline
-                loop
-                preload="metadata"
-                onClick={(e) => e.stopPropagation()}
-              />
-            ) : (
-              <img
-                src={activeMedia?.src ?? achievement.heroImage}
-                alt={achievement.title}
-                className="h-[220px] w-full object-cover sm:h-[300px]"
-              />
-            )}
-          </div>
-
-          <div className="mt-2 flex gap-1 overflow-x-auto pb-1 no-scrollbar">
-            {mediaItems.map((item, index) => (
-              <button
-                key={item.id}
-                type="button"
-                onClick={(e) => {
-                  e.stopPropagation();
-                  setActiveIndex(index);
-                }}
-                aria-label={`View ${achievement.title} memory item ${index + 1}`}
-                className="shrink-0 overflow-hidden rounded-md border"
-                style={{ 
-                  borderColor: index === activeIndex ? accent.badgeText : 'rgba(255,255,255,0.08)',
-                  transform: 'none',
-                  boxShadow: index === activeIndex ? `0 0 0 2px ${accent.badgeBg}` : 'none'
-                }}
-              >
-                <div className="relative">
-                  {item.type === 'video' ? (
-                    <div className="relative flex h-7 w-10 items-center justify-center bg-slate-900 sm:h-8 sm:w-12">
-                      <img
-                        src={item.thumb}
-                        alt={`${achievement.title} memory video`}
-                        className="absolute inset-0 h-full w-full object-cover opacity-60"
-                      />
-                      <PlayCircle size={12} className="relative z-10 text-white/90" />
-                    </div>
-                  ) : (
-                    <img
-                      src={item.thumb}
-                      alt={`${achievement.title} memory ${index + 1}`}
-                      className="h-7 w-10 object-cover sm:h-8 sm:w-12"
-                    />
-                  )}
-                </div>
-              </button>
-            ))}
+      <div className="flex flex-col gap-5">
+        <div className="relative aspect-video w-full overflow-hidden rounded-[16px] border border-white/10 shadow-2xl">
+          {videoUrl ? (
+            <video
+              src={videoUrl}
+              className="h-full w-full bg-black object-cover"
+              autoPlay
+              muted
+              playsInline
+              loop
+              preload="metadata"
+            />
+          ) : (
+            <img
+              src={achievement.heroImage}
+              alt={achievement.title}
+              className="h-full w-full object-cover"
+            />
+          )}
+          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+          
+          <div className="absolute bottom-4 left-4 right-4 flex items-end justify-between">
+            <div
+              className="inline-flex items-center gap-1.5 rounded-full border px-3 py-1 text-[10px] font-bold uppercase tracking-wider"
+              style={{ borderColor: accent.badgeBorder, background: accent.badgeBg, color: accent.badgeText }}
+            >
+              <span className="h-1.5 w-1.5 rounded-full animate-pulse" style={{ background: accent.badgeText }} />
+              {achievement.badge}
+            </div>
+            <div className="flex items-center gap-2 rounded-lg bg-black/40 px-2 py-1 backdrop-blur-md">
+              <Trophy className="text-yellow-400" size={16} />
+              <span className="text-[10px] font-black uppercase text-white">
+                {achievement.rankLabel}
+              </span>
+            </div>
           </div>
         </div>
 
-        <div className="flex flex-col">
-          <div className="flex items-start justify-between gap-2">
-            <div
-              className="inline-flex items-center gap-1 rounded-full border px-2 py-0.5 text-[8px] font-medium uppercase tracking-[0.1em]"
-              style={{ borderColor: accent.badgeBorder, background: accent.badgeBg, color: accent.badgeText }}
-            >
-              <span className="h-0.5 w-0.5 rounded-full" style={{ background: accent.badgeText }} />
-              {achievement.badge}
-            </div>
-            <div className="text-right">
-              <Trophy className="ml-auto mb-0 text-yellow-300" size={14} />
-              <div className="text-[10px] font-black uppercase" style={{ color: accent.badgeText }}>
-                {achievement.rankLabel}
-              </div>
-            </div>
-          </div>
-
-          <h3 className="mt-1 font-serif text-xl font-black tracking-tight text-white sm:text-2xl">
+        <div>
+          <h3 className="font-serif text-2xl font-black tracking-tight text-white">
             {achievement.title}
           </h3>
-          <p className="mt-0 text-[12px] text-slate-400">{achievement.subtitle}</p>
+          <p className="mt-1 text-xs font-medium text-slate-400">{achievement.subtitle}</p>
 
-          <div className="mt-2.5 grid grid-cols-2 gap-1.5">
-            <div className="rounded-md border border-white/10 bg-white/[0.03] px-2 py-1.5">
-              <p className="text-[7px] uppercase tracking-[0.1em] text-slate-500">Project</p>
-              <p className="mt-0 text-[10px] font-semibold text-white">{achievement.project}</p>
-            </div>
-            <div className="rounded-md border border-white/10 bg-white/[0.03] px-2 py-1.5">
-              <p className="text-[7px] uppercase tracking-[0.1em] text-slate-500">Duration</p>
-              <p className="mt-0 text-[10px] font-semibold text-white">{achievement.duration}</p>
-            </div>
-          </div>
+          <p className="mt-4 text-sm leading-relaxed text-slate-300 line-clamp-3">
+            {achievement.summary}
+          </p>
 
-          <p className="mt-2.5 text-[11px] leading-5 text-slate-300 sm:leading-6">{achievement.detail}</p>
-
-          <div className="mt-2.5 flex flex-wrap gap-1">
-            {achievement.detailTags.map((tag) => (
-              <span
-                key={tag}
-                className="rounded-full border border-slate-700/60 px-1.5 py-0.5 text-[8px] font-semibold text-slate-300"
-                style={{ background: 'rgba(148,163,184,0.08)' }}
-              >
-                {tag}
-              </span>
-            ))}
-          </div>
-
-          <div className="mt-4 flex flex-wrap gap-2">
-            {achievement.videoUrl && (
-              <a
-                href={achievement.videoUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-1 rounded-md px-3 py-1.5 text-[9px] font-bold text-[#050810]"
-                style={{ background: `linear-gradient(135deg, ${accent.badgeText}, #f8fafc)`, transform: 'none' }}
-              >
-                Watch Video <PlayCircle size={10} />
-              </a>
-            )}
-
+          <div className="mt-6 flex items-center gap-3">
             <a
-              href={achievement.liveUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-1 rounded-md border border-white/10 bg-white/[0.03] px-3 py-1.5 text-[9px] font-bold text-white"
-              style={{ transform: 'none' }}
+              href="#achievements"
+              onClick={handleOverviewClick}
+              className="flex flex-1 items-center justify-center gap-2 rounded-xl py-3 text-xs font-black text-[#050810] transition-all hover:scale-[1.02] active:scale-95 shadow-lg shadow-yellow-500/20"
+              style={{ background: `linear-gradient(135deg, ${accent.badgeText}, #f8fafc)` }}
             >
-              Open Media <ExternalLink size={8} />
+              OPEN DETAILS
+              <ExternalLink size={14} />
             </a>
           </div>
         </div>
@@ -394,100 +316,111 @@ function AchievementModalItem({ achievement }) {
 
 function AchievementModal({ activeId, onClose }) {
   const loopAchievements = useMemo(
-    () =>
-      ['su-hackathon-2026', 'ganpat-hackathon-2025']
-        .map((id) => achievements.find((achievement) => achievement.id === id))
-        .filter(Boolean),
+    () => achievements.filter(Boolean),
     []
   );
-  const [activeIndex, setActiveIndex] = useState(0);
+
+  const initialIndex = useMemo(() => {
+    const index = loopAchievements.findIndex(a => a.id === activeId);
+    return index !== -1 ? index : 0;
+  }, [activeId, loopAchievements]);
+
+  const [activeIndex, setActiveIndex] = useState(initialIndex);
   const currentId = loopAchievements[activeIndex]?.id ?? activeId;
 
   useEffect(() => {
-    setActiveIndex(0);
-    return undefined;
-  }, [activeId]);
+    setActiveIndex(initialIndex);
+  }, [initialIndex]);
 
+  // Auto-loop achievements from left to right
   useEffect(() => {
-    if (loopAchievements.length < 2) {
-      return undefined;
-    }
+    if (loopAchievements.length < 2) return undefined;
 
     const interval = setInterval(() => {
-      setActiveIndex((current) => (current === 0 ? 1 : 0));
-    }, 1500);
+      setActiveIndex((current) => (current === loopAchievements.length - 1 ? 0 : current + 1));
+    }, 2500); // Back to faster loop for that dynamic feel
 
     return () => clearInterval(interval);
-  }, [loopAchievements]);
+  }, [loopAchievements.length]);
 
-  return (
-    <div
-      className="fixed inset-0 z-[9000] flex items-center justify-center p-4"
-      style={{ background: 'rgba(3,5,12,0.88)', backdropFilter: 'blur(8px)' }}
+  // Auto-close after 8 seconds total
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      onClose();
+    }, 8000); 
+    return () => clearTimeout(timer);
+  }, [onClose]);
+
+  return createPortal(
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      className="fixed inset-0 z-[99999] flex items-center justify-center p-6"
+      style={{ background: 'rgba(3,5,12,0.85)', backdropFilter: 'blur(10px)' }}
       onClick={onClose}
     >
-      <button
-        onClick={onClose}
-        aria-label="Close achievement details"
-        className="absolute right-4 top-4 z-[9001] flex h-8 w-8 items-center justify-center rounded-full border border-slate-700/50 text-slate-300"
-        style={{ background: 'rgba(8,12,24,0.75)', backdropFilter: 'blur(10px)', transform: 'none' }}
+      <motion.div 
+        initial={{ scale: 0.9, opacity: 0, y: 20 }}
+        animate={{ scale: 1, opacity: 1, y: 0 }}
+        exit={{ scale: 0.9, opacity: 0, y: 20 }}
+        className="relative w-full max-w-[420px] overflow-hidden"
+        onClick={(e) => e.stopPropagation()}
       >
-        <X size={14} />
-      </button>
+        <button
+          onClick={onClose}
+          aria-label="Close achievement details"
+          className="absolute right-4 top-4 z-[9001] flex h-8 w-8 items-center justify-center rounded-full border border-white/10 text-white/70 hover:text-white transition-all"
+          style={{ background: 'rgba(0,0,0,0.4)', backdropFilter: 'blur(8px)' }}
+        >
+          <X size={16} />
+        </button>
 
-      <div className="w-full max-w-[760px] overflow-hidden py-2">
         <div
-          className="flex transition-transform duration-300 ease-in-out"
+          className="flex transition-transform duration-500 ease-out"
           style={{ transform: `translateX(-${activeIndex * 100}%)` }}
         >
           {loopAchievements.map((achievement) => (
             <div
               key={achievement.id}
-              data-id={achievement.id}
               className="w-full shrink-0 px-1"
             >
               <div
                 className="relative overflow-hidden"
                 style={{
                   padding: '1px',
-                  borderRadius: '21px',
+                  borderRadius: '25px',
                   background: accentStyles[achievement.accent]?.border ?? accentStyles.gold.border,
-                  boxShadow: `0 15px 45px ${accentStyles[achievement.accent]?.glow ?? accentStyles.gold.glow}`,
-                  transform: 'none'
                 }}
               >
-                <AchievementModalItem achievement={achievement} />
+                <AchievementModalItem achievement={achievement} onClose={onClose} />
               </div>
             </div>
           ))}
         </div>
-      </div>
+      </motion.div>
 
-      <div className="absolute bottom-8 left-1/2 flex -translate-x-1/2 gap-1">
+      <div className="absolute bottom-10 left-1/2 flex -translate-x-1/2 gap-2">
         {loopAchievements.map((achievement, index) => (
           <button
             key={`dot-${achievement.id}`}
-            aria-label={`Go to achievement ${index + 1}`}
             onClick={(e) => {
               e.stopPropagation();
-              const nextIndex = loopAchievements.findIndex((item) => item.id === achievement.id);
-              if (nextIndex !== -1) {
-                setActiveIndex(nextIndex);
-              }
+              setActiveIndex(index);
             }}
-            className={`h-0.5 rounded-full ${
-              achievement.id === currentId ? 'w-4 bg-yellow-400' : 'w-2 bg-white/10'
+            className={`h-1 rounded-full transition-all duration-300 ${
+              index === activeIndex ? 'w-6 bg-yellow-400' : 'w-1.5 bg-white/20'
             }`}
-            style={{ transform: 'none' }}
           />
         ))}
       </div>
-    </div>
+    </motion.div>,
+    document.body
   );
 }
 
 
-const Achievements = () => {
+const Achievements = ({ isLoading = false }) => {
   const [activeAchievement, setActiveAchievement] = useState(null);
   const hasAutoOpened = useRef(false);
 
@@ -495,6 +428,20 @@ const Achievements = () => {
     () => achievements.find((item) => item.featured) ?? achievements[0] ?? null,
     []
   );
+
+  useEffect(() => {
+    if (isLoading || hasAutoOpened.current || !featuredAchievement) {
+      return undefined;
+    }
+
+    hasAutoOpened.current = true;
+    const timer = window.setTimeout(() => {
+      console.log('Auto-opening featured achievement:', featuredAchievement.id);
+      setActiveAchievement(featuredAchievement.id);
+    }, 1200);
+
+    return () => window.clearTimeout(timer);
+  }, [featuredAchievement, isLoading]);
 
   useEffect(() => {
     if (!activeAchievement) {
@@ -564,19 +511,27 @@ const Achievements = () => {
               <AchievementCard
                 key={achievement.id}
                 achievement={achievement}
-                onOpen={setActiveAchievement}
+                onOpen={(id) => {
+                  console.log('setActiveAchievement called with:', id);
+                  setActiveAchievement(id);
+                }}
               />
             ))}
           </div>
         </div>
       </section>
 
-      {activeAchievement && (
-        <AchievementModal
-          activeId={activeAchievement}
-          onClose={() => setActiveAchievement(null)}
-        />
-      )}
+      <AnimatePresence>
+        {activeAchievement && (
+          <AchievementModal
+            activeId={activeAchievement}
+            onClose={() => {
+              console.log('onClose called');
+              setActiveAchievement(null);
+            }}
+          />
+        )}
+      </AnimatePresence>
     </>
   );
 };

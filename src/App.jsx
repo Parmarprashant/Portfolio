@@ -89,7 +89,7 @@ export default function Portfolio() {
           <Projects />
           <FigmaDesign />
           <Certificates />
-          <Achievements />
+          <Achievements isLoading={isLoading} />
           <Education />
           <Contact />
           <Footer />
