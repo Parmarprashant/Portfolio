@@ -17,7 +17,7 @@ const Projects = () => {
           <h2 className="text-4xl sm:text-5xl md:text-6xl font-black mb-4 md:mb-6 tracking-tight gradient-text section-heading">
             Featured Projects
           </h2>
-          <p className="text-xl text-slate-300 scroll-animate-up" style={{ animationDelay: '0.2s' }}>Showcase of my best work and accomplishments</p>
+          <p className="text-xl text-slate-300 scroll-animate-up" style={{ animationDelay: '0.2s' }}>A showcase of my full-stack MERN projects, from scalable web apps to real-time systems.</p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">

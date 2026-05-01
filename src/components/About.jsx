@@ -40,7 +40,7 @@ const About = () => {
             About Me
           </h2>
           <p className="text-xl text-slate-300 max-w-2xl mx-auto scroll-animate-up" style={{ animationDelay: '0.2s' }}>
-            I'm a first-year Computer Engineering student at Swaminarayan University with a passion for web development and building innovative digital solutions. As a beginner in the tech world, I'm enthusiastic about learning new technologies and creating meaningful projects that solve real problems.
+            I am a Full Stack Developer specializing in the MERN stack (MongoDB, Express, React, Node.js). I build scalable web applications, real-time systems, and modern UI experiences that solve real-world problems.
           </p>
         </div>
 

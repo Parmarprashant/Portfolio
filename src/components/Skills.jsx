@@ -45,7 +45,7 @@ const Skills = () => {
           <div className="pointer-events-none absolute inset-x-10 top-0 h-24 bg-gradient-to-r from-blue-500/10 via-purple-500/10 to-transparent blur-2xl" />
           <h3 className="mb-3 text-3xl md:text-4xl font-black text-white gradient-text">Skills & Technologies</h3>
           <p className="mb-8 max-w-2xl text-xl text-slate-300">
-            Tools I use to design, build, and ship responsive web experiences.
+            Expertise in the MERN stack and modern technologies used to design, build, and ship high-performance web experiences.
           </p>
 
           <motion.div

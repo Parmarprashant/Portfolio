@@ -16,7 +16,7 @@ const Hero = () => {
             </h1>
 
             <p className="text-lg sm:text-xl text-slate-300 [[class*='light-mode']_&]:text-slate-600 leading-relaxed max-w-lg animate-fade-in-up animation-delay-300">
-              A passionate web developer crafting beautiful, responsive, and high-performance digital experiences. I transform ideas into code.
+              Full Stack MERN Developer building scalable web applications and high-performance digital experiences. Specializing in React, Node.js, and modern UI/UX design.
             </p>
 
             <div className="flex flex-wrap gap-3 sm:gap-4 pt-4 sm:pt-6">
