@@ -10,6 +10,22 @@ export const certificates = [
     image: 'https://res.cloudinary.com/dgib19szk/image/upload/f_auto,q_auto,w_600/v1776451222/d7cfd351-88b6-4573-bff7-f312e86a0ae6_page-0001_crdcnv.jpg',
     description: 'Received a Certificate of Participation for contributing to the Dev Heat Hackathon at Spring Fiesta, organized by IIIT Surat. This experience enhanced my problem-solving, teamwork, and real-world development skills in a competitive environment.'
   },
+  {
+    id: 5,
+    title: 'Elite Hack 1.0 Participation',
+    issuer: 'Elite Coders',
+    date: '2026',
+    image: 'https://res.cloudinary.com/dgib19szk/image/upload/v1777925608/Screenshot_2026-05-05_013253_jlmger.png',
+    description: 'Received a Certificate of Participation for representing Team VentureHack from Swaminarayan University, Gujarat in Elite Hack 1.0, a global online hackathon by Elite Coders that brought together 7,500+ participants and 900+ teams. The event highlighted creativity, collaboration, and strong builder spirit in a highly competitive environment.'
+  },
+  {
+    id: 6,
+    title: "Tic Tech Toe '26 Participation",
+    issuer: 'IEEE SB DAIICT',
+    date: 'April 10, 2026',
+    image: 'https://res.cloudinary.com/dgib19szk/image/upload/v1777925663/34d1fa32-68ff-48fc-b53c-d6c35d166baa_ta8qok.jpg',
+    description: "Received a Certificate of Participation for Tic Tech Toe '26, organized by IEEE SB DAIICT from April 10 to April 12, 2026. This experience reflected active engagement in a competitive innovation environment and strengthened problem-solving, teamwork, and technical collaboration skills."
+  },
 ];
 
 export const achievements = [
