@@ -79,6 +79,18 @@ export const achievements = [
 
 export const projects = [
   {
+    title: 'Zylora',
+    desc: 'A full-stack e-commerce platform featuring secure authentication, AI integration, real-time communication, and WebRTC calling.',
+    tags: ['React', 'Node.js', 'Express.js', 'JWT', 'AI Integration', 'WebSocket', 'WebRTC'],
+    image: '/Zylora-Poster.png',
+    category: 'Full Stack',
+    github: 'https://github.com/Parmarprashant/zylora',
+    live: 'https://zylora-ecommerce.vercel.app',
+    youtube: 'https://www.youtube.com/watch?v=zylora-demo',
+    postman: 'https://documenter.getpostman.com/view/your-docs',
+    pinned: true
+  },
+  {
     title: 'KisanDost',
     desc: 'Empowering Indian farmers with precision technology, satellite monitoring, and expert crop care. A comprehensive agricultural platform built with modern technologies.',
     tags: ['React JS', 'Next.js', 'MongoDB', 'Python', 'Node.js', 'Express'],

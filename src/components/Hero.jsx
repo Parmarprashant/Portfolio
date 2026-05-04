@@ -27,7 +27,7 @@ const Hero = () => {
               <a href="#projects" className="px-8 py-4 rounded-full font-bold border-2 border-blue-500 text-blue-400 hover:bg-blue-500/10 transition-all duration-300 transform hover:scale-105 animate-skew-in animation-delay-500">
                 View My Work
               </a>
-              <a href="/resume.html" target="_blank" rel="noopener noreferrer" className="px-8 py-4 rounded-full font-bold border-2 border-slate-600 text-slate-300 [[class*='light-mode']_&]:text-slate-600 [[class*='light-mode']_&]:border-slate-300 hover:border-blue-500 hover:text-blue-400 transition-all duration-300 transform hover:scale-105 flex items-center gap-2 animate-slide-up-bounce animation-delay-600">
+              <a href="/Prashant-Parmar_Resume.pdf" target="_blank" rel="noopener noreferrer" className="px-8 py-4 rounded-full font-bold border-2 border-slate-600 text-slate-300 [[class*='light-mode']_&]:text-slate-600 [[class*='light-mode']_&]:border-slate-300 hover:border-blue-500 hover:text-blue-400 transition-all duration-300 transform hover:scale-105 flex items-center gap-2 animate-slide-up-bounce animation-delay-600">
                 <Download size={18} /> Resume
               </a>
             </div>
