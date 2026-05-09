@@ -48,7 +48,7 @@ const Navbar = ({ isDark, setIsDark }) => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 flex justify-between items-center">
         <div />
 
-        <div className="hidden md:flex gap-10 items-center">
+        <div className="hidden md:flex gap-4 lg:gap-8 items-center">
           {navItems.map((item, idx) => {
             const sectionId = item.toLowerCase().replace(/\s+/g, '-');
             const isActive = activeSection === sectionId;
@@ -57,8 +57,8 @@ const Navbar = ({ isDark, setIsDark }) => {
                 key={idx}
                 href={`#${sectionId}`}
                 onClick={() => setActiveSection(sectionId)}
-                className={`font-semibold transition-all duration-300 relative group ${
-                  isActive ? 'text-white scale-110' : 'text-slate-300 hover:text-blue-400'
+                className={`text-sm lg:text-base font-semibold transition-all duration-300 relative group ${
+                  isActive ? 'text-blue-500 scale-110' : 'text-slate-300 hover:text-blue-400'
                 }`}
               >
                 {item}
