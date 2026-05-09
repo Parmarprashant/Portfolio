@@ -1,4 +1,3 @@
-import React from 'react';
 import { motion } from 'framer-motion';
 
 const skills = ['React.js', 'Next.js', 'JavaScript', 'TypeScript', 'HTML5', 'CSS3', 'Tailwind CSS', 'Node.js', 'Express.js', 'Python', 'C/C++', 'MongoDB', 'PostgreSQL', 'Git', 'GitHub', 'Figma', 'Postman', 'Redux', 'Docker', 'AWS'];

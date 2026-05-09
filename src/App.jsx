@@ -1,4 +1,4 @@
-import React, { useState, useEffect, lazy, Suspense } from 'react';
+import { useState, useEffect, lazy, Suspense } from 'react';
 import './App.css';
 import LoadingScreen from './components/LoadingScreen';
 import Navbar from './components/Navbar';

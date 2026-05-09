@@ -1,40 +1,51 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { Menu, X, Sun, Moon } from 'lucide-react';
 
 const Navbar = ({ isDark, setIsDark }) => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('');
+  const [scrolled, setScrolled] = useState(false);
 
   const navItems = ['About', 'Skills', 'Projects', 'Figma Design', 'Certificates', 'Achievements', 'Education', 'Contact'];
 
   useEffect(() => {
-    const observerOptions = {
-      root: null,
-      rootMargin: '-20% 0px -70% 0px',
-      threshold: 0
-    };
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 20);
+      const scrollPosition = window.scrollY + 100;
 
-    const observerCallback = (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          setActiveSection(entry.target.id);
+      // Special case for Hero/Home at the top
+      if (scrollPosition < 500) {
+        setActiveSection('');
+        return;
+      }
+
+      for (const item of navItems) {
+        const sectionId = item.toLowerCase().replace(/\s+/g, '-');
+        const element = document.getElementById(sectionId);
+        
+        if (element) {
+          const { offsetTop, offsetHeight } = element;
+          if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
+            setActiveSection(sectionId);
+            break;
+          }
         }
-      });
+      }
     };
 
-    const observer = new IntersectionObserver(observerCallback, observerOptions);
+    window.addEventListener('scroll', handleScroll);
+    handleScroll(); // Initial check
 
-    navItems.forEach((item) => {
-      const element = document.getElementById(item.toLowerCase().replace(/\s+/g, '-'));
-      if (element) observer.observe(element);
-    });
-
-    return () => observer.disconnect();
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   return (
-    <nav className="fixed w-full glass-effect shadow-2xl z-50 border-b border-blue-500/20 backdrop-blur-xl">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 py-3 sm:py-4 flex justify-between items-center">
+    <nav className={`fixed w-full z-50 transition-all duration-300 ${
+      scrolled 
+        ? 'glass-effect shadow-2xl py-3 border-b border-blue-500/20 backdrop-blur-xl' 
+        : 'bg-transparent py-5'
+    }`}>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 flex justify-between items-center">
         <div />
 
         <div className="hidden md:flex gap-10 items-center">
@@ -45,6 +56,7 @@ const Navbar = ({ isDark, setIsDark }) => {
               <a
                 key={idx}
                 href={`#${sectionId}`}
+                onClick={() => setActiveSection(sectionId)}
                 className={`font-semibold transition-all duration-300 relative group ${
                   isActive ? 'text-white scale-110' : 'text-slate-300 hover:text-blue-400'
                 }`}
@@ -102,7 +114,10 @@ const Navbar = ({ isDark, setIsDark }) => {
                   className={`text-xl font-semibold transition-colors py-2 ${
                     isActive ? 'text-blue-400 scale-110' : 'text-slate-300 hover:text-blue-400'
                   }`}
-                  onClick={() => setMenuOpen(false)}
+                  onClick={() => {
+                    setActiveSection(sectionId);
+                    setMenuOpen(false);
+                  }}
                 >
                   {item}
                 </a>

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { ChevronLeft, ArrowRight, ExternalLink, Github } from 'lucide-react';
 import { projects } from '../data/constants';
 
