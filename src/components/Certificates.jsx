@@ -71,38 +71,38 @@ const Certificates = () => {
               {certificates.map((certificate, index) => (
                 <article
                   key={certificate.id}
-                  className="glass-effect w-[84vw] max-w-[680px] shrink-0 rounded-3xl border border-blue-500/30 p-6 md:w-[68vw] md:p-8"
+                  className="glass-effect w-[84vw] max-w-[600px] shrink-0 rounded-3xl border border-blue-500/30 p-5 md:w-[60vw] md:p-7"
                 >
-                  <div className="mb-8 flex items-center justify-between gap-4">
-                    <div className="inline-block rounded-full border border-blue-500/30 bg-blue-500/20 px-4 py-2 text-sm font-bold text-blue-400">
+                  <div className="mb-6 flex items-center justify-between gap-4">
+                    <div className="inline-block rounded-full border border-blue-500/30 bg-blue-500/20 px-4 py-1.5 text-xs font-bold text-blue-400">
                       Certificate {index + 1} of {certificates.length}
                     </div>
                   </div>
 
-                  <div className="mb-8 space-y-8">
+                  <div className="mb-6 space-y-6">
                     <div>
-                      <p className="mb-2 text-sm font-bold uppercase tracking-wider text-slate-400">
+                      <p className="mb-1 text-xs font-bold uppercase tracking-wider text-slate-400">
                         Certificate
                       </p>
-                      <h3 className="text-3xl font-black text-white md:text-4xl">
+                      <h3 className="text-2xl font-black text-white md:text-3xl">
                         {certificate.title}
                       </h3>
                     </div>
 
-                    <div className="grid gap-6 border-t border-blue-500/20 pt-4 md:grid-cols-2">
+                    <div className="grid gap-4 border-t border-blue-500/20 pt-4 md:grid-cols-2">
                       <div>
-                        <p className="mb-2 text-sm font-bold text-slate-400">Issued By</p>
-                        <p className="text-xl font-bold text-blue-400">{certificate.issuer}</p>
+                        <p className="mb-1 text-xs font-bold text-slate-400">Issued By</p>
+                        <p className="text-lg font-bold text-blue-400">{certificate.issuer}</p>
                       </div>
                       <div>
-                        <p className="mb-2 text-sm font-bold text-slate-400">Date Issued</p>
-                        <p className="text-xl font-bold text-purple-400">{certificate.date}</p>
+                        <p className="mb-1 text-xs font-bold text-slate-400">Date Issued</p>
+                        <p className="text-lg font-bold text-purple-400">{certificate.date}</p>
                       </div>
                     </div>
 
                     {certificate.description && (
                       <div className="border-t border-blue-500/10 pt-4">
-                        <p className="text-sm leading-relaxed text-slate-300">
+                        <p className="text-xs leading-relaxed text-slate-300 line-clamp-3">
                           {certificate.description}
                         </p>
                       </div>
@@ -113,7 +113,7 @@ const Certificates = () => {
                     <img
                       src={certificate.image}
                       alt={certificate.title}
-                      className={`h-[320px] w-full object-contain md:h-[420px] transition-transform duration-500 ${
+                      className={`h-[240px] w-full object-contain md:h-[320px] transition-transform duration-500 ${
                         certificate.rotate ? 'rotate-90 scale-125' : ''
                       }`}
                       loading="lazy"
