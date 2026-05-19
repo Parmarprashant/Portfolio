@@ -32,6 +32,7 @@ export const certificates = [
     issuer: 'Microsoft',
     date: '2026',
     image: 'https://res.cloudinary.com/dgib19szk/image/upload/v1779167496/Achievements_-_prashantparmar-2631___Microsoft_Learn-1_vtnmyy.png',
+    rotate: true,
     description: 'Earned a Microsoft Learn achievement certificate for completing advanced technical training modules.'
   },
   {
@@ -40,6 +41,7 @@ export const certificates = [
     issuer: 'Microsoft',
     date: '2026',
     image: 'https://res.cloudinary.com/dgib19szk/image/upload/v1779167482/Achievements_-_prashantparmar-2631___Microsoft_Learn-2-1_fn1fko.png',
+    rotate: true,
     description: 'Earned a Microsoft Learn achievement certificate for demonstrating proficiency in Microsoft cloud and development technologies.'
   },
 ];

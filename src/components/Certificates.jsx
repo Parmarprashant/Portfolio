@@ -109,11 +109,13 @@ const Certificates = () => {
                     )}
                   </div>
 
-                  <div className="overflow-hidden rounded-xl border border-blue-500/20 shadow-lg">
+                  <div className="overflow-hidden rounded-xl border border-blue-500/20 shadow-lg bg-black/20 flex items-center justify-center">
                     <img
                       src={certificate.image}
                       alt={certificate.title}
-                      className="h-[320px] w-full object-cover md:h-[420px]"
+                      className={`h-[320px] w-full object-contain md:h-[420px] transition-transform duration-500 ${
+                        certificate.rotate ? 'rotate-90 scale-125' : ''
+                      }`}
                       loading="lazy"
                       decoding="async"
                     />
