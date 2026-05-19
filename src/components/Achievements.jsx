@@ -143,6 +143,7 @@ function AchievementCard({ achievement, onOpen }) {
           {activeMedia?.type === 'video' ? (
             <video
               src={activeMedia.src}
+              poster={activeMedia.thumb}
               className="h-[300px] w-full bg-black object-cover sm:h-[440px]"
               autoPlay
               muted
@@ -257,6 +258,7 @@ function AchievementModalItem({ achievement, onClose }) {
           {videoUrl ? (
             <video
               src={videoUrl}
+              poster={achievement.sideImage ?? achievement.heroImage}
               className="h-full w-full bg-black object-cover"
               autoPlay
               muted

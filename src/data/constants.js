@@ -92,13 +92,13 @@ export const achievements = [
     detail:
       'Built CampusFlow, a smart campus operations dashboard concept with AI-powered scheduling, issue reporting, and analytics. This dummy achievement is included to help you scale the section with future real wins.',
     heroImage:
-      'https://images.unsplash.com/photo-1504384308090-c894fdcc538d?q=80&w=1200&auto=format&fit=crop',
+      'https://res.cloudinary.com/dgib19szk/image/upload/v1779168775/IMG_7243.JPG_izgilg.jpg',
     sideImage:
-      'https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?q=80&w=800&auto=format&fit=crop',
+      'https://res.cloudinary.com/dgib19szk/image/upload/v1779168772/IMG_7228_pkmioy.png',
     galleryImages: [
-      'https://images.unsplash.com/photo-1504384308090-c894fdcc538d?q=80&w=800&auto=format&fit=crop',
-      'https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?q=80&w=800&auto=format&fit=crop',
-      'https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=800&auto=format&fit=crop'
+      'https://res.cloudinary.com/dgib19szk/image/upload/v1779168775/IMG_7243.JPG_izgilg.jpg',
+      'https://res.cloudinary.com/dgib19szk/image/upload/v1779168772/IMG_7228_pkmioy.png',
+      'https://res.cloudinary.com/dgib19szk/image/upload/v1779168775/IMG_7243.JPG_izgilg.jpg'
     ],
     memoryLabel: 'Award Winning Moment',
     footerLabel: 'Convergence Ganpat 2026',
