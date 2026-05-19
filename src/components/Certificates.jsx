@@ -7,7 +7,7 @@ const Certificates = () => {
   const viewportRef = useRef(null);
   const trackRef = useRef(null);
   const [maxTranslate, setMaxTranslate] = useState(0);
-  const [sectionHeight, setSectionHeight] = useState('260vh');
+  const [sectionHeight, setSectionHeight] = useState('100vh');
 
   const { scrollYProgress } = useScroll({
     target: sectionRef,
@@ -24,19 +24,20 @@ const Certificates = () => {
 
       const viewportWidth = viewportRef.current.clientWidth;
       const viewportHeight = window.innerHeight;
-      const nextMaxTranslate = Math.max(
-        0,
-        trackRef.current.scrollWidth - viewportWidth
-      );
+      const nextMaxTranslate = Math.max(0, trackRef.current.scrollWidth - viewportWidth);
 
       setMaxTranslate(nextMaxTranslate);
       setSectionHeight(`${viewportHeight + nextMaxTranslate}px`);
     };
 
-    updateMeasurements();
+    // Use a small timeout to ensure layout has stabilized
+    const timer = setTimeout(updateMeasurements, 100);
     window.addEventListener('resize', updateMeasurements);
 
-    return () => window.removeEventListener('resize', updateMeasurements);
+    return () => {
+      clearTimeout(timer);
+      window.removeEventListener('resize', updateMeasurements);
+    };
   }, []);
 
   return (
@@ -63,11 +64,11 @@ const Certificates = () => {
           </div>
 
           <div ref={viewportRef} className="overflow-hidden">
-            <motion.div
-              ref={trackRef}
-              style={{ x }}
-              className="flex gap-6 pr-4 will-change-transform md:gap-8 md:pr-8"
-            >
+              <motion.div
+                ref={trackRef}
+                style={{ x }}
+                className="flex w-max gap-6 will-change-transform md:gap-8"
+              >
               {certificates.map((certificate, index) => (
                 <article
                   key={certificate.id}
