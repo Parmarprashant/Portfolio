@@ -7,7 +7,7 @@ const Projects = () => {
   const [activeTab, setActiveTab] = useState('Full Stack');
   const isDark = document.documentElement.classList.contains('light-mode') === false;
 
-  const categories = ['Full Stack', 'Games', 'Clones', 'Frontend'];
+  const categories = ['Full Stack', 'Games', 'Frontend'];
   const filteredProjects = projects.filter(project => project.category === activeTab);
 
   return (

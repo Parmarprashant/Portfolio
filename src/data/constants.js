@@ -139,7 +139,7 @@ export const projects = [
     desc: 'Built a Coursera-inspired learning platform clone using HTML, CSS, and JavaScript with a responsive UI.',
     tags: ['HTML', 'CSS', 'JavaScript'],
     image: 'https://res.cloudinary.com/dgib19szk/image/upload/f_auto,q_auto,w_800/v1767780750/Screenshot_2026-01-07_102815_rr1koh.png',
-    category: 'Clones',
+    category: 'Frontend',
     github: 'https://github.com/Parmarprashant/coursera-clone',
     live: 'https://courseraa-prashant.netlify.app',
     youtube: 'https://youtu.be/bOv65Dt3avk?si=x2qNM685yzrV1PNp'
@@ -149,7 +149,7 @@ export const projects = [
     desc: 'Built a Delhivery platform clone using HTML, CSS, and JavaScript with a responsive UI.',
     tags: ['HTML', 'CSS', 'JavaScript'],
     image: 'https://res.cloudinary.com/dgib19szk/image/upload/f_auto,q_auto,w_800/v1767780750/Screenshot_2026-01-07_103140_fx5l0q.png',
-    category: 'Clones',
+    category: 'Frontend',
     github: 'https://github.com/Parmarprashant/delhivery-clone',
     live: 'https://del-prashant.netlify.app',
     youtube: 'https://youtu.be/znt3gThQh4g?si=l8NLNiQVXbgACb0E'
@@ -159,7 +159,7 @@ export const projects = [
     desc: 'Built a Skipii platform clone using HTML, CSS, and JavaScript with a responsive UI.',
     tags: ['HTML', 'CSS', 'JavaScript'],
     image: 'https://res.cloudinary.com/dgib19szk/image/upload/f_auto,q_auto,w_800/v1767780750/Screenshot_2026-01-07_103834_z0bjuj.png',
-    category: 'Clones',
+    category: 'Frontend',
     github: 'https://github.com/Parmarprashant/skipii-clone',
     live: 'https://skippi-prashant.netlify.app',
     youtube: 'https://youtu.be/AAypqWni_MM?si=EZaaIZhWFAGqC5FG'
@@ -169,7 +169,7 @@ export const projects = [
     desc: 'Built a BluetoKaiCoffee platform clone using HTML, CSS, and JavaScript with a responsive UI.',
     tags: ['HTML', 'CSS', 'JavaScript'],
     image: 'https://res.cloudinary.com/dgib19szk/image/upload/f_auto,q_auto,w_800/v1767780750/Screenshot_2026-01-07_104334_zlcpvi.png',
-    category: 'Clones',
+    category: 'Frontend',
     github: 'https://github.com/Parmarprashant/bluetokai-clone',
     live: 'https://blue-clone-prashant.netlify.app',
     youtube: 'https://youtu.be/O6Mdh3mOgCo?si=3erYXPQ9AzeIjcr3'
@@ -189,7 +189,7 @@ export const projects = [
     desc: 'Built a Blix Scooter platform clone using HTML, CSS, and JavaScript with modern UI',
     tags: ['HTML', 'CSS', 'JavaScript'],
     image: 'https://res.cloudinary.com/dgib19szk/image/upload/f_auto,q_auto,w_800/v1767780751/Screenshot_2026-01-07_104517_bsyo7d.png',
-    category: 'Clones',
+    category: 'Frontend',
     github: 'https://github.com/Parmarprashant/blix-scooter-clone',
     live: 'https://bliss-clone.netlify.app',
     youtube: 'https://youtu.be/lVykFH56af8?si=y45U3vmHcRnK3Dgd'
