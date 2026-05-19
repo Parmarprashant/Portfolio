@@ -26,6 +26,22 @@ export const certificates = [
     image: 'https://res.cloudinary.com/dgib19szk/image/upload/v1777925663/34d1fa32-68ff-48fc-b53c-d6c35d166baa_ta8qok.jpg',
     description: "Received a Certificate of Participation for Tic Tech Toe '26, organized by IEEE SB DAIICT from April 10 to April 12, 2026. This experience reflected active engagement in a competitive innovation environment and strengthened problem-solving, teamwork, and technical collaboration skills."
   },
+  {
+    id: 7,
+    title: 'Microsoft Learn Achievement 1',
+    issuer: 'Microsoft',
+    date: '2026',
+    image: 'https://res.cloudinary.com/dgib19szk/image/upload/v1779167496/Achievements_-_prashantparmar-2631___Microsoft_Learn-1_vtnmyy.png',
+    description: 'Earned a Microsoft Learn achievement certificate for completing advanced technical training modules.'
+  },
+  {
+    id: 8,
+    title: 'Microsoft Learn Achievement 2',
+    issuer: 'Microsoft',
+    date: '2026',
+    image: 'https://res.cloudinary.com/dgib19szk/image/upload/v1779167482/Achievements_-_prashantparmar-2631___Microsoft_Learn-2-1_fn1fko.png',
+    description: 'Earned a Microsoft Learn achievement certificate for demonstrating proficiency in Microsoft cloud and development technologies.'
+  },
 ];
 
 export const achievements = [
