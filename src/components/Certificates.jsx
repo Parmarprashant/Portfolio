@@ -30,7 +30,7 @@ const Certificates = () => {
       );
 
       setMaxTranslate(nextMaxTranslate);
-      setSectionHeight(`${Math.max(viewportHeight * 2.2, viewportHeight + nextMaxTranslate + 240)}px`);
+      setSectionHeight(`${viewportHeight + nextMaxTranslate}px`);
     };
 
     updateMeasurements();
