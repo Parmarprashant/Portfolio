@@ -163,12 +163,12 @@ function AchievementCard({ achievement, onOpen }) {
 
         </div>
 
-        <p className="relative z-10 mt-5 text-center text-xl tracking-wide" style={{ color: accent.badgeText }}>
+        <p className="relative z-10 mt-6 text-center text-xl font-medium tracking-wide" style={{ color: accent.badgeText }}>
           {achievement.memoryLabel}
         </p>
 
         <div
-          className="relative z-10 mt-4 flex items-center justify-center gap-3"
+          className="relative z-10 mt-6 flex items-center justify-center gap-3 px-4"
           onClick={stopCardOpen}
         >
           {mediaItems.map((item, index) => (
@@ -180,27 +180,27 @@ function AchievementCard({ achievement, onOpen }) {
                 setActiveIndex(index);
               }}
               aria-label={`View ${achievement.title} gallery item ${index + 1}`}
-              className="overflow-hidden rounded-xl border"
+              className="overflow-hidden rounded-xl border transition-all duration-300 hover:scale-110 active:scale-95 shadow-md"
               style={{
                 borderColor: index === activeIndex ? accent.badgeText : 'rgba(255,255,255,0.08)',
-                boxShadow: index === activeIndex ? `0 0 0 2px ${accent.badgeBg}` : 'none',
+                boxShadow: index === activeIndex ? `0 0 12px ${accent.badgeBg}` : 'none',
               }}
             >
               <div className="relative">
                 {item.type === 'video' ? (
-                  <div className="relative flex h-12 w-16 items-center justify-center bg-slate-900 sm:h-14 sm:w-20">
+                  <div className="relative flex h-12 w-16 items-center justify-center bg-slate-900 sm:h-16 sm:w-24">
                     <img
                       src={item.thumb}
                       alt={`${achievement.title} gallery video`}
                       className="absolute inset-0 h-full w-full object-cover opacity-60"
                     />
-                    <PlayCircle size={18} className="relative z-10 text-white/90" />
+                    <PlayCircle size={20} className="relative z-10 text-white/90" />
                   </div>
                 ) : (
                   <img
                     src={item.thumb}
                     alt={`${achievement.title} gallery ${index + 1}`}
-                    className="h-12 w-16 object-cover sm:h-14 sm:w-20"
+                    className="h-12 w-16 object-cover sm:h-16 sm:w-24"
                   />
                 )}
               </div>
@@ -208,12 +208,15 @@ function AchievementCard({ achievement, onOpen }) {
           ))}
         </div>
 
-        <div className="relative z-10 mt-5 flex items-center justify-center gap-2">
+        <div className="relative z-10 mt-6 flex items-center justify-center gap-2.5">
           {mediaItems.map((_, index) => (
             <span
               key={`${achievement.id}-dot-${index}`}
-              className="h-2.5 w-2.5 rounded-full"
-              style={{ background: index === activeIndex ? accent.badgeText : 'rgba(255,255,255,0.28)' }}
+              className="h-2 w-2 rounded-full transition-all duration-300"
+              style={{ 
+                background: index === activeIndex ? accent.badgeText : 'rgba(255,255,255,0.2)',
+                transform: index === activeIndex ? 'scale(1.2)' : 'scale(1)'
+              }}
             />
           ))}
         </div>
