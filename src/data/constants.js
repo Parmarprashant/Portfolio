@@ -194,6 +194,87 @@ export const projects = [
     live: 'https://bliss-clone.netlify.app',
     youtube: 'https://youtu.be/lVykFH56af8?si=y45U3vmHcRnK3Dgd'
   },
+  {
+    title: 'Tic Tac Toe',
+    desc: 'A classic Tic Tac Toe game built with HTML, CSS, and JavaScript featuring a responsive design and smooth gameplay.',
+    tags: ['HTML', 'CSS', 'JavaScript'],
+    image: 'https://res.cloudinary.com/dgib19szk/image/upload/v1779167921/Screenshot_2026-05-19_104726_flcniv.png',
+    category: 'Games',
+    github: 'https://github.com/Parmarprashant/javaScript-Games',
+    live: '#'
+  },
+  {
+    title: 'Memory Match',
+    desc: 'Test your memory with this interactive card-matching game built using pure JavaScript and CSS animations.',
+    tags: ['HTML', 'CSS', 'JavaScript'],
+    image: 'https://res.cloudinary.com/dgib19szk/image/upload/v1779167921/Screenshot_2026-05-19_104741_n58pvb.png',
+    category: 'Games',
+    github: 'https://github.com/Parmarprashant/javaScript-Games',
+    live: '#'
+  },
+  {
+    title: 'Snake Game',
+    desc: 'The legendary Snake game recreated for the web with keyboard controls and score tracking.',
+    tags: ['HTML', 'CSS', 'JavaScript'],
+    image: 'https://res.cloudinary.com/dgib19szk/image/upload/v1779167921/Screenshot_2026-05-19_104753_mc2sor.png',
+    category: 'Games',
+    github: 'https://github.com/Parmarprashant/javaScript-Games',
+    live: '#'
+  },
+  {
+    title: 'Rock Paper Scissors',
+    desc: 'A fun Rock Paper Scissors game with an interactive UI and score tracking against the computer.',
+    tags: ['HTML', 'CSS', 'JavaScript'],
+    image: 'https://res.cloudinary.com/dgib19szk/image/upload/v1779167921/Screenshot_2026-05-19_104630_jenlah.png',
+    category: 'Games',
+    github: 'https://github.com/Parmarprashant/javaScript-Games',
+    live: '#'
+  },
+  {
+    title: 'Whack-a-Mole',
+    desc: 'A fast-paced Whack-a-Mole game that tests your reaction time. Built with DOM manipulation.',
+    tags: ['HTML', 'CSS', 'JavaScript'],
+    image: 'https://res.cloudinary.com/dgib19szk/image/upload/v1779167920/Screenshot_2026-05-19_104712_u2dkn7.png',
+    category: 'Games',
+    github: 'https://github.com/Parmarprashant/javaScript-Games',
+    live: '#'
+  },
+  {
+    title: 'Hangman',
+    desc: 'Classic Hangman word-guessing game with a clean UI and category-based word lists.',
+    tags: ['HTML', 'CSS', 'JavaScript'],
+    image: 'https://res.cloudinary.com/dgib19szk/image/upload/v1779167920/Screenshot_2026-05-19_104659_btiu1x.png',
+    category: 'Games',
+    github: 'https://github.com/Parmarprashant/javaScript-Games',
+    live: '#'
+  },
+  {
+    title: 'Word Scramble',
+    desc: 'Unscramble words in this fun educational game built with JavaScript logic and CSS styling.',
+    tags: ['HTML', 'CSS', 'JavaScript'],
+    image: 'https://res.cloudinary.com/dgib19szk/image/upload/v1779167920/Screenshot_2026-05-19_104645_pebvce.png',
+    category: 'Games',
+    github: 'https://github.com/Parmarprashant/javaScript-Games',
+    live: '#'
+  },
+  {
+    title: 'Typing Speed Test',
+    desc: 'Challenge yourself to improve your typing speed with this real-time WPM calculator and accuracy tracker.',
+    tags: ['HTML', 'CSS', 'JavaScript'],
+    image: 'https://res.cloudinary.com/dgib19szk/image/upload/v1779167920/Screenshot_2026-05-19_104559_zpbqum.png',
+    category: 'Games',
+    github: 'https://github.com/Parmarprashant/javaScript-Games',
+    live: '#'
+  },
+  {
+    title: 'Breakout Clone',
+    desc: 'A retro Breakout-style ball and paddle game implemented using the HTML5 Canvas API.',
+    tags: ['HTML', 'CSS', 'JavaScript'],
+    image: 'https://res.cloudinary.com/dgib19szk/image/upload/v1779167920/Screenshot_2026-05-19_104617_eqx1lz.png',
+    category: 'Games',
+    github: 'https://github.com/Parmarprashant/javaScript-Games',
+    live: '#'
+  },
 ];
 
 export const figmaDesigns = [

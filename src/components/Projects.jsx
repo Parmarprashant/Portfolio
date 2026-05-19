@@ -4,7 +4,11 @@ import { projects } from '../data/constants';
 
 const Projects = () => {
   const [projectsToShow, setProjectsToShow] = useState(3);
+  const [activeTab, setActiveTab] = useState('Full Stack');
   const isDark = document.documentElement.classList.contains('light-mode') === false;
+
+  const categories = ['Full Stack', 'Games', 'Clones', 'Frontend'];
+  const filteredProjects = projects.filter(project => project.category === activeTab);
 
   return (
     <section id="projects" className="py-10 sm:py-12 md:py-16 relative overflow-hidden">
@@ -20,8 +24,28 @@ const Projects = () => {
           <p className="text-xl text-slate-300 scroll-animate-up" style={{ animationDelay: '0.2s' }}>A showcase of my full-stack MERN projects, from scalable web apps to real-time systems.</p>
         </div>
 
+        {/* Category Tabs */}
+        <div className="flex flex-wrap justify-center gap-4 mb-12 scroll-animate-up">
+          {categories.map((category) => (
+            <button
+              key={category}
+              onClick={() => {
+                setActiveTab(category);
+                setProjectsToShow(3);
+              }}
+              className={`px-6 py-2 rounded-full font-bold transition-all duration-300 ${
+                activeTab === category
+                  ? 'bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-lg shadow-blue-500/50 scale-105'
+                  : 'bg-slate-800/50 text-slate-300 hover:bg-slate-700 hover:text-white border border-blue-500/20'
+              }`}
+            >
+              {category}
+            </button>
+          ))}
+        </div>
+
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-          {projects.slice(0, projectsToShow).map((project, idx) => (
+          {filteredProjects.slice(0, projectsToShow).map((project, idx) => (
             <div
               key={idx}
               className="card-hover group glass-effect rounded-2xl overflow-hidden border border-blue-500/20 hover:border-blue-500/50 relative scroll-animate-up animate-fade-scale"
@@ -145,7 +169,7 @@ const Projects = () => {
               Show Less
             </button>
           )}
-          {projectsToShow < projects.length && (
+          {projectsToShow < filteredProjects.length && (
             <button
               onClick={() => {
                 setProjectsToShow(projectsToShow + 3);
