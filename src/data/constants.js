@@ -301,6 +301,6 @@ export const figmaDesigns = [
 ];
 
 export const education = [
-  { school: 'Swaminarayan University', field: 'Computer Engineering', detail: 'Relevant coursework: Web Development' },
+  { school: 'Swaminarayan University', field: 'Computer Engineering', detail: 'Relevant coursework: Data Structures, Machine Learning, DBMS, System Design, and Web Development.' },
   { school: "Little flower's School", field: 'Higher Secondary Education', detail: 'Focus on Science and Mathematics. With Some Coding experience in Python', year: '2023-2025' },
 ];

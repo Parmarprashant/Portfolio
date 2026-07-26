@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 
-const skills = ['React.js', 'Next.js', 'JavaScript', 'TypeScript', 'HTML5', 'CSS3', 'Tailwind CSS', 'Node.js', 'Express.js', 'Python', 'C/C++', 'MongoDB', 'PostgreSQL', 'Git', 'GitHub', 'Figma', 'Postman', 'Redux', 'Docker', 'AWS'];
+const skills = ['React.js', 'Next.js', 'JavaScript', 'TypeScript', 'HTML5', 'CSS3', 'Tailwind CSS', 'Node.js', 'Express.js', 'Python', 'NumPy', 'Pandas', 'Machine Learning', 'C/C++', 'MongoDB', 'PostgreSQL', 'Firebase', 'Supabase', 'Git', 'GitHub', 'Figma', 'Postman', 'Redux', 'Docker', 'Kubernetes', 'AWS', 'System Design'];
 
 const skillsContainer = {
   hidden: {},
@@ -39,7 +39,7 @@ const About = () => {
             About Me
           </h2>
           <p className="text-xl text-slate-300 max-w-2xl mx-auto scroll-animate-up" style={{ animationDelay: '0.2s' }}>
-            I am a Full Stack Developer specializing in the MERN stack (MongoDB, Express, React, Node.js). I build scalable web applications, real-time systems, and modern UI experiences that solve real-world problems.
+            I am a Full Stack Developer & AI enthusiast specializing in the MERN stack and exploring Machine Learning. I build scalable web applications, real-time systems, and modern UI experiences that solve real-world problems.
           </p>
         </div>
 
@@ -47,14 +47,14 @@ const About = () => {
           <div className="glass-effect rounded-2xl p-8 border border-blue-500/20 scroll-animate-left">
             <h3 className="text-2xl font-bold text-white mb-4 gradient-text">My Journey</h3>
             <p className="text-slate-300 leading-relaxed mb-4">
-              I started my coding journey during high school with a curiosity about how websites and applications work. Now, as a first-year student, I'm actively learning full-stack development and exploring different technologies. Every project I build teaches me something new, and I'm committed to improving my skills every day. My education at Swaminarayan University combined with self-directed learning has given me a solid foundation in web development.
+              I started my coding journey during high school with a curiosity about how websites and applications work. Now, as a second-year student, I'm actively learning full-stack development and exploring different technologies. Every project I build teaches me something new, and I'm committed to improving my skills every day. My education at Swaminarayan University combined with self-directed learning has given me a solid foundation in web development.
             </p>
           </div>
           
           <div className="glass-effect rounded-2xl p-8 border border-blue-500/20 scroll-animate-right">
             <h3 className="text-2xl font-bold text-white mb-4 gradient-text">What I'm Learning</h3>
             <p className="text-slate-300 leading-relaxed mb-4">
-              I'm currently learning the MERN stack (MongoDB, Express, React, Node.js) and have a growing understanding of JavaScript, HTML, and CSS. I'm also exploring Python and other backend technologies. Through my projects and coursework, I'm building responsive web applications and developing problem-solving skills. I'm eager to collaborate on projects and contribute to the developer community while continuing to expand my knowledge.
+              While I have a strong foundation in the MERN stack, I am now expanding my expertise into Data Science and Machine Learning using Python, NumPy, and Pandas. I am also exploring scalable architectures, System Design, and cloud-native technologies like Kubernetes. Through my projects and coursework, I focus on building robust, full-stack applications and integrating AI to solve complex problems. I'm eager to collaborate on innovative projects and contribute to the developer community.
             </p>
           </div>
         </div>
